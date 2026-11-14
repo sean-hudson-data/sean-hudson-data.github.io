@@ -1,0 +1,21 @@
+/* Shared tweaks for both light and dark themes */
+
+/* Keep the bottom-line finding visible at the top of each project */
+.bottom-line {
+  font-size: 1.15rem;
+  border-left: 4px solid var(--bs-primary);
+  padding: 0.5rem 1rem;
+  margin: 1rem 0 1.5rem;
+}
+
+/* Listing cards: fixed image height so the grid lines up */
+.quarto-grid-item .card-img-top img,
+.quarto-grid-item img.thumbnail-image {
+  height: 180px;
+  object-fit: cover;
+}
+
+/* Language badges in the project listing */
+.listing-categories .listing-category {
+  font-size: 0.75rem;
+}
