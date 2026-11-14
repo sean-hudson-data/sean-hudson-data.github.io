@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://sean-hudson-data.github.io/projects.html</loc>
-    <lastmod>2026-11-14T18:56:20.494Z</lastmod>
+    <loc>https://sean-hudson-data.github.io/index.html</loc>
+    <lastmod>2026-11-14T19:25:36.380Z</lastmod>
   </url>
   <url>
     <loc>https://sean-hudson-data.github.io/projects/futurama/index.html</loc>
-    <lastmod>2026-11-14T19:22:39.145Z</lastmod>
+    <lastmod>2026-11-14T19:25:36.386Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sean-hudson-data.github.io/projects.html</loc>
+    <lastmod>2026-11-14T19:25:36.380Z</lastmod>
   </url>
   <url>
     <loc>https://sean-hudson-data.github.io/about.html</loc>
-    <lastmod>2026-11-14T18:56:20.492Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sean-hudson-data.github.io/index.html</loc>
-    <lastmod>2026-11-14T18:56:20.494Z</lastmod>
+    <lastmod>2026-11-14T19:25:36.380Z</lastmod>
   </url>
 </urlset>

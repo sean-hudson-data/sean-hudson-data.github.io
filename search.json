@@ -1,10 +1,17 @@
 [
   {
-    "objectID": "projects.html",
-    "href": "projects.html",
-    "title": "Projects",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Sean Hudson",
     "section": "",
-    "text": "What Is Bender’s Most-Used Word?\n\n\n\nR\n\nText analysis\n\nJust for fun\n\n\n\nTesting a Futurama plot point against 140 episodes of transcripts: Bender’s top word is his own name, but nobody says ‘ass’ more.\n\n\n\n\n\nNo matching items"
+    "text": "I build data systems and analyses for food rescue: measuring community need, mapping food access, and helping a national network of partners understand their impact. I work mostly in R, increasingly in Python, and like analyses that end in a decision someone can act on."
+  },
+  {
+    "objectID": "index.html#featured-work",
+    "href": "index.html#featured-work",
+    "title": "Sean Hudson",
+    "section": "Featured work",
+    "text": "Featured work\n\n\n\n\n\n\n\n\n\n\nWhat Is Bender’s Most-Used Word?\n\n\n\nR\n\nText analysis\n\nJust for fun\n\n\n\nTesting a Futurama plot point against 140 episodes of transcripts: Bender’s top word is his own name, but nobody says ‘ass’ more.\n\n\n\n\n\nNo matching items\n\nAll projects →"
   },
   {
     "objectID": "projects/futurama/index.html",
@@ -56,24 +63,17 @@
     "text": "How this was done\n\n\n\n\n\n\nNoteMethods and limitations\n\n\n\n\n\nData. Transcripts of all 140 broadcast episodes from The Infosphere, collected in 2023. The 140 include the four films, which aired as 16 “Part” episodes. Only aggregated counts are published here; the transcripts and scraping code are not.\nCleaning. Most transcript pages had never been split into speaker and line, so I re-split every line on its first colon. That kept 1,010 lines that contain a second colon, which my 2023 version cut off. Stage directions in brackets and parentheses are removed from both the speaker and the line. Alternate-universe, robot, and ghost versions of the main cast count as the same character. The result is 28,949 spoken lines.\nWords. Tokenized with tidytext. Common words are removed using tidytext’s stop-word lists, plus interjections and filler (“hey,” “yeah,” “uh,” “gonna,” and stretched spellings like “ohhhh”). Stemming uses the Porter stemmer. Ties share a rank.\nWhy remove filler. With stop words alone, “hey” edges out “bender” as his top word:\n\n\n\n\n\n\n\n\n\nDefinition\nTop five\n\n\n\n\nStop words and filler removed (used here)\nbender (206), fry (158), robot (123), time (84), wait (83)\n\n\nStop words only\nhey (212), bender (206), yeah (172), fry (158), robot (123)\n\n\n\n\n\nWhat changed from 2023. The original version of this analysis (published on LinkedIn) counted “bender” 375 times. That was inflated: its cleaning removed parenthetical directions but left bracketed ones like “[Bender walks in]” in the dialogue.\nLimitations. Two episodes are mostly missing from the source: “Naturama” is one unsplit block of text and “Saturday Morning Fun Pit” largely is too, so those blocks are left out. “Zapp Dingbat” and “Meanwhile” have short transcripts at the source. Fan transcripts also miss or mishear some lines."
   },
   {
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "Projects",
+    "section": "",
+    "text": "What Is Bender’s Most-Used Word?\n\n\n\nR\n\nText analysis\n\nJust for fun\n\n\n\nTesting a Futurama plot point against 140 episodes of transcripts: Bender’s top word is his own name, but nobody says ‘ass’ more.\n\n\n\n\n\nNo matching items"
+  },
+  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
     "section": "",
     "text": "Now. Director of Data & Analytics at 412 Food Rescue, which runs the Food Rescue Hero platform used by food rescue organizations across North America. As the organization’s dedicated data lead, I cover BI, data engineering, geospatial analysis, statistical modeling, and ML.\nBefore. \nEducation. University of Pittsburgh, School of Public and International Affairs. \nTools. R (tidyverse, fixest, sf), Python (pandas, geopandas, pyfixest), SQL/Postgres, Observable JS, MapLibre.\nElsewhere. Treasurer, National Food Recovery Association executive board."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Sean Hudson",
-    "section": "",
-    "text": "I build data systems and analyses for food rescue: measuring community need, mapping food access, and helping a national network of partners understand their impact. I work mostly in R, increasingly in Python, and like analyses that end in a decision someone can act on."
-  },
-  {
-    "objectID": "index.html#featured-work",
-    "href": "index.html#featured-work",
-    "title": "Sean Hudson",
-    "section": "Featured work",
-    "text": "Featured work\n\n\n\n\n\n\n\n\n\n\nWhat Is Bender’s Most-Used Word?\n\n\n\nR\n\nText analysis\n\nJust for fun\n\n\n\nTesting a Futurama plot point against 140 episodes of transcripts: Bender’s top word is his own name, but nobody says ‘ass’ more.\n\n\n\n\n\nNo matching items\n\nAll projects →"
   }
 ]

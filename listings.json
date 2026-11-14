@@ -1,12 +1,12 @@
 [
   {
-    "listing": "/projects.html",
+    "listing": "/index.html",
     "items": [
       "/projects/futurama/index.html"
     ]
   },
   {
-    "listing": "/index.html",
+    "listing": "/projects.html",
     "items": [
       "/projects/futurama/index.html"
     ]
