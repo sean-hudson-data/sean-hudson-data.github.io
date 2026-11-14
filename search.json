@@ -1,19 +1,5 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Sean Hudson",
-    "section": "",
-    "text": "I build data systems and analyses for food rescue: measuring community need, mapping food access, and helping a national network of partners understand their impact. I work mostly in R, increasingly in Python, and like analyses that end in a decision someone can act on."
-  },
-  {
-    "objectID": "index.html#featured-work",
-    "href": "index.html#featured-work",
-    "title": "Sean Hudson",
-    "section": "Featured work",
-    "text": "Featured work\n\n\n\n\nNo matching items\n\nAll projects →"
-  },
-  {
     "objectID": "projects.html",
     "href": "projects.html",
     "title": "Projects",
@@ -26,5 +12,19 @@
     "title": "About",
     "section": "",
     "text": "Now. Director of Data & Analytics at 412 Food Rescue, which runs the Food Rescue Hero platform used by food rescue organizations across North America. As the organization’s dedicated data lead, I cover BI, data engineering, geospatial analysis, statistical modeling, and ML.\nBefore. \nEducation. University of Pittsburgh, School of Public and International Affairs. \nTools. R (tidyverse, fixest, sf), Python (pandas, geopandas, pyfixest), SQL/Postgres, Observable JS, MapLibre.\nElsewhere. Treasurer, National Food Recovery Association executive board."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Sean Hudson",
+    "section": "",
+    "text": "I build data systems and analyses for food rescue: measuring community need, mapping food access, and helping a national network of partners understand their impact. I work mostly in R, increasingly in Python, and like analyses that end in a decision someone can act on."
+  },
+  {
+    "objectID": "index.html#featured-work",
+    "href": "index.html#featured-work",
+    "title": "Sean Hudson",
+    "section": "Featured work",
+    "text": "Featured work\n\n\n\n\nNo matching items\n\nAll projects →"
   }
 ]
