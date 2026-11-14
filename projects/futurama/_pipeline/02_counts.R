@@ -13,12 +13,13 @@
 # - Stems: SnowballC::wordStem(), English Porter stemmer.
 # - Ranks: min_rank(), so ties share a rank and the next rank is skipped
 #   (two words tied at 14th are both 14th; the next is 16th).
-# - Scope: all 140 broadcast episodes plus the 4 films.
+# - Scope: the 140 broadcast episodes. These include the four films as 16
+#   "Part" episodes, so the full-length film transcripts are dropped as duplicates.
 # - Only named, individual speakers are credited; group lines ("Fry and Bender")
 #   are excluded from character totals.
-# - Why fillers matter: with only tidytext stop words, "hey" (227) nearly ties
-#   "bender" (237) and wins without the films. output/sensitivity_fillers.csv
-#   keeps that comparison for the methods note.
+# - Why fillers matter: with only tidytext stop words, "hey" edges out
+#   "bender" as Bender's top word. output/sensitivity_fillers.csv keeps that
+#   comparison for the methods note.
 
 library(dplyr)
 library(readr)
@@ -26,7 +27,8 @@ library(tidyr)
 library(tidytext)
 library(SnowballC)
 
-lines_clean <- readRDS("data-private/lines_clean.rds")
+lines_clean <- readRDS("data-private/lines_clean.rds") |>
+  filter(type == "episode")   # full-length films repeat the 16 "Part" episodes
 
 # Interjections and fillers --------------------------------------------------
 # A fixed list plus a pattern, so stretched spellings ("ohhhh", "hmmm", "wooo",
@@ -75,24 +77,20 @@ bender_top_stems <- content |>
   count(stem, name = "n") |>
   rank_words(stem)
 
-# Sensitivity: Bender's top 10 with tidytext stop words only (fillers kept),
-# with and without the films
+# Sensitivity: Bender's top 10 with tidytext stop words only (fillers kept)
+# vs. the definition used on the page
 sensitivity_fillers <- bind_rows(
   tokens |> filter(speaker == "Bender", !is_tidytext_stop) |>
-    count(word, name = "n") |> mutate(definition = "tidytext stop words only", scope = "episodes + films"),
-  tokens |> filter(speaker == "Bender", !is_tidytext_stop, type == "episode") |>
-    count(word, name = "n") |> mutate(definition = "tidytext stop words only", scope = "episodes only"),
+    count(word, name = "n") |> mutate(definition = "tidytext stop words only"),
   content |> filter(speaker == "Bender") |>
-    count(word, name = "n") |> mutate(definition = "also excluding fillers", scope = "episodes + films"),
-  content |> filter(speaker == "Bender", type == "episode") |>
-    count(word, name = "n") |> mutate(definition = "also excluding fillers", scope = "episodes only")
+    count(word, name = "n") |> mutate(definition = "also excluding fillers")
 ) |>
-  group_by(definition, scope) |>
+  group_by(definition) |>
   mutate(rank = min_rank(desc(n))) |>
   filter(rank <= 10 | word == "ass") |>
-  arrange(definition, scope, rank, word) |>
+  arrange(definition, rank, word) |>
   ungroup() |>
-  select(definition, scope, rank, word, n)
+  select(definition, rank, word, n)
 
 # Audit trail: every filler removed, with counts across all speakers
 fillers_removed <- tokens |>

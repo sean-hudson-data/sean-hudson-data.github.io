@@ -1,41 +1,278 @@
 ---
 title: "What Is Bender's Most-Used Word?"
-description: "Testing a Futurama plot point against the transcripts: Bender's top word is his own name, but nobody says 'ass' more."
-date: 2023-11-01        # originally published on LinkedIn; add date-modified on refresh
-categories: [R, Python, Text analysis, Just for fun]
-# image: ass_users.png    # keep this filename (uncomment once the file exists)
+description: "Testing a Futurama plot point against 140 episodes of transcripts: Bender's top word is his own name, but nobody says 'ass' more."
+date: 2023-11-01
+date-modified: 2026-11-14
+categories: [R, Text analysis, Just for fun]
+image: ass_users.png
 css: futurama.css
 order: 2
-draft: true
+fig-cap-location: top
 ---
 
+<!-- TODO (Sean): read through the prose; it's a first draft in your voice. -->
+
+```{r}
+#| label: setup
+#| include: false
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(forcats)
+library(scales)
+
+# Transparent PNGs so each rendering sits on the page's own background
+knitr::opts_chunk$set(dev.args = list(bg = "transparent"))
+
+d <- function(f) read_csv(file.path("data", f), show_col_types = FALSE)
+
+top_words  <- d("bender_top_words.csv")
+top_stems  <- d("bender_top_stems.csv")
+ass_users  <- d("ass_by_character.csv")
+totals     <- d("character_totals.csv")
+claimed    <- d("claimed_vs_actual.csv")
+sens       <- d("sensitivity_fillers.csv")
+report     <- d("parse_report.csv")
+
+step <- function(s) report$rows[report$step == s]
+
+# Planet Express green for bars; orange marks the word or character in focus.
+# Both pass 3:1 against the light and dark page backgrounds.
+pe_green <- "#2E9E68"
+focus    <- "#D9762B"
+
+# One theme, two renderings, so charts match the site's light/dark toggle
+theme_pe <- function(mode = c("light", "dark")) {
+  mode <- match.arg(mode)
+  ink   <- if (mode == "light") "#343a40" else "#e3e6ea"
+  muted <- if (mode == "light") "#5f6670" else "#aab1ba"
+  grid  <- if (mode == "light") "#e6e8eb" else "#2c3138"
+  theme_minimal(base_size = 13) +
+    theme(
+      text               = element_text(colour = ink),
+      axis.text          = element_text(colour = muted),
+      axis.title         = element_text(colour = muted, size = 11),
+      panel.grid.major.y = element_blank(),
+      panel.grid.minor   = element_blank(),
+      panel.grid.major.x = element_line(colour = grid, linewidth = 0.4),
+      plot.background    = element_rect(fill = "transparent", colour = NA),
+      panel.background   = element_rect(fill = "transparent", colour = NA),
+      legend.position    = "none"
+    )
+}
+label_ink <- function(mode) if (mode == "light") "#343a40" else "#e3e6ea"
+
+bender_n   <- top_words$n[top_words$word == "bender"]
+fry_n      <- top_words$n[top_words$word == "fry"]
+ass        <- filter(top_words, word == "ass")
+ass_stem   <- filter(top_stems, stem == "ass")
+ass_bender <- ass_users$ass_exact[ass_users$speaker == "Bender"]
+ass_next   <- ass_users |> filter(speaker != "Bender") |> slice_max(ass_exact, n = 1, with_ties = FALSE)
+```
+
 ::: {.bottom-line}
-**Bottom line.** <!-- TODO: premise and answer up front -->
+**Bottom line.** Bender's most-used word is his own name (`r bender_n` times), then "fry" (`r fry_n`). "Ass" is only his `r scales::ordinal(ass$rank)` most-used word, but he says it `r ass_bender` times, more than anyone else in the show.
 :::
+
+In "War Is the H-Word," the plot turns on a bomb that will go off when Bender says his most-used word. Fans have always assumed they know what that word is. I counted every word Bender says across all 140 episodes to check.
+
+<!-- TODO (Sean): confirm the premise wording against the episode. -->
 
 ## His top word is his own name
 
-## Who says "ass" most?
+Bender talks about Bender a lot. After removing common words like "the" and "I," and filler like "hey" and "yeah," his own name tops the list, followed by his best friend's.
 
-<!-- ![](ass_users.png) -->
+```{r}
+#| label: top-words
+#| fig-cap: "Bender's 15 most-used words"
+#| fig-alt: "Horizontal bar chart of Bender's 15 most-used words. 'bender' leads, followed by 'fry' and 'robot'; 'ass' is highlighted in seventh place."
+#| fig-width: 7
+#| fig-height: 5
+#| renderings: [light, dark]
+plot_top <- function(mode) {
+  top_words |>
+    filter(rank <= 15) |>
+    slice_head(n = 15) |>
+    mutate(word = fct_reorder(word, n), is_ass = word == "ass") |>
+    ggplot(aes(n, word, fill = is_ass)) +
+    geom_col(width = 0.72) +
+    geom_text(aes(label = n, fontface = ifelse(is_ass, "bold", "plain")),
+              hjust = -0.25, size = 3.6, colour = label_ink(mode)) +
+    scale_fill_manual(values = c(`FALSE` = pe_green, `TRUE` = focus)) +
+    scale_x_continuous(expand = expansion(mult = c(0, 0.1))) +
+    labs(x = "Times said", y = NULL) +
+    theme_pe(mode)
+}
+plot_top("light")
+plot_top("dark")
+```
 
-## Per-word rate by character
+Ties share a rank, so "`r paste(top_words$word[top_words$rank == 9], collapse = '" and "')`" are both 9th. Stemming, which folds "asses" into "ass" but also merges other words' variants, drops "ass" to `r scales::ordinal(ass_stem$rank)`.
 
-<!-- Normalize by total words spoken. -->
+## Nobody says "ass" more
 
-## The episode's top ten vs. the real counts
+He may not say it most often, but he says it more than anyone else, and it isn't close. `r ass_next$speaker` is a distant second with `r ass_next$ass_exact`.
 
-<!-- Left join from the claimed list so zero-count words show up. -->
+```{r}
+#| label: ass-users
+#| fig-cap: "Who says \"ass\" most"
+#| fig-alt: "Horizontal bar chart of the characters who say 'ass' most. Bender is far ahead of everyone else; Fry and Leela follow with under 20 each."
+#| fig-width: 7
+#| fig-height: 4
+#| renderings: [light, dark]
+plot_ass <- function(mode) {
+  ass_users |>
+    slice_max(ass_exact, n = 8, with_ties = FALSE) |>
+    mutate(speaker = fct_reorder(speaker, ass_exact), is_bender = speaker == "Bender") |>
+    ggplot(aes(ass_exact, speaker, fill = is_bender)) +
+    geom_col(width = 0.72) +
+    geom_text(aes(label = ass_exact), hjust = -0.3, size = 3.6, colour = label_ink(mode)) +
+    scale_fill_manual(values = c(`FALSE` = pe_green, `TRUE` = focus)) +
+    scale_x_continuous(expand = expansion(mult = c(0, 0.1))) +
+    labs(x = "Times said \"ass\"", y = NULL) +
+    theme_pe(mode)
+}
+plot_ass("light")
+plot_ass("dark")
+```
+
+```{r}
+#| label: thumbnail
+#| include: false
+# Listing-card thumbnail: top five only, wide and short so the card crop keeps it readable
+thumb <- ass_users |>
+  slice_max(ass_exact, n = 5, with_ties = FALSE) |>
+  mutate(speaker = fct_reorder(speaker, ass_exact), is_bender = speaker == "Bender") |>
+  ggplot(aes(ass_exact, speaker, fill = is_bender)) +
+  geom_col(width = 0.7) +
+  geom_text(aes(label = ass_exact), hjust = -0.3, size = 6, colour = "#343a40") +
+  scale_fill_manual(values = c(`FALSE` = pe_green, `TRUE` = focus)) +
+  scale_x_continuous(expand = expansion(mult = c(0, 0.12))) +
+  labs(x = NULL, y = NULL) +
+  theme_pe("light") +
+  theme(axis.text.x = element_blank(), panel.grid.major.x = element_blank(),
+        axis.text.y = element_text(size = 17, colour = "#343a40"),
+        plot.background = element_rect(fill = "white", colour = NA),
+        plot.margin = margin(14, 14, 14, 14))
+ggsave("ass_users.png", thumb, width = 8, height = 3.8, dpi = 120)
+```
+
+## Per word spoken, it's closer
+
+Bender also talks more than almost anyone, so raw counts flatter him. Scaling by how much each character says changes the picture: among characters with at least 2,000 words, Mom says "ass" at a slightly higher rate. That rests on just `r ass_users$ass_exact[ass_users$speaker == "Mom"]` uses, though, so I wouldn't put much weight on it.
+
+```{r}
+#| label: ass-rate
+#| fig-cap: "\"Ass\" per 10,000 words spoken (characters with 2,000+ words who say it at least once)"
+#| fig-alt: "Dot chart of 'ass' per 10,000 words for main characters. Mom and Bender lead at around 16 to 20 per 10,000 words; everyone else is under 7."
+#| fig-width: 7
+#| fig-height: 4
+#| renderings: [light, dark]
+rate_data <- totals |>
+  filter(words >= 2000) |>
+  left_join(select(ass_users, speaker, ass_exact), by = "speaker") |>
+  filter(coalesce(ass_exact, 0) > 0) |>   # characters who say it at least once
+  mutate(
+         rate = 1e4 * ass_exact / words,
+         speaker = fct_reorder(speaker, rate),
+         is_bender = speaker == "Bender")
+
+plot_rate <- function(mode) {
+  ggplot(rate_data, aes(rate, speaker, colour = is_bender)) +
+    geom_segment(aes(x = 0, xend = rate, yend = speaker), linewidth = 0.6, alpha = 0.6) +
+    geom_point(size = 3.2) +
+    geom_text(aes(label = paste0(ass_exact, ifelse(ass_exact == 1, " use", " uses"))), hjust = -0.25, size = 3.3,
+              colour = if (mode == "light") "#5f6670" else "#aab1ba") +
+    scale_colour_manual(values = c(`FALSE` = pe_green, `TRUE` = focus)) +
+    scale_x_continuous(expand = expansion(mult = c(0, 0.25))) +
+    labs(x = "Per 10,000 words spoken", y = NULL) +
+    theme_pe(mode)
+}
+plot_rate("light")
+plot_rate("dark")
+```
+
+## The episode's list vs. the real counts
+
+<!-- TODO (Sean): confirm these are the words shown in the episode. -->
+
+Here are the words on the episode's list, with how often Bender actually says each. Several barely register, and three are common words ("my," "up," "yours") that word counts usually leave out.
+
+```{r}
+#| label: claimed-list
+claimed |>
+  arrange(desc(n), word) |>
+  transmute(
+    Word = word,
+    `Times Bender says it` = n,
+    `Rank among all his words` = ifelse(is.na(rank_all_words), "never said", scales::ordinal(rank_all_words, big.mark = ",")),
+    `Rank after removing common words` = case_when(
+      is_stop_word ~ "removed (common word)",
+      is.na(rank_content_words) ~ "never said",
+      TRUE ~ scales::ordinal(rank_content_words, big.mark = ",")
+    )
+  ) |>
+  knitr::kable(align = "lrrr")
+```
+
+## Explore any character's words
+
+```{ojs}
+//| echo: false
+words = FileAttachment("data/character_word_counts.csv").csv({typed: true})
+speakers = Array.from(new Set(words.map(d => d.speaker))).sort()
+viewof who = Inputs.select(speakers, {label: "Character", value: "Bender"})
+topN = words.filter(d => d.speaker === who).sort((a, b) => b.n - a.n).slice(0, 15)
+
+Plot.plot({
+  marginLeft: 90,
+  marginRight: 40,
+  height: 420,
+  x: {label: "Times said", grid: true},
+  y: {label: null},
+  marks: [
+    Plot.barX(topN, {
+      x: "n", y: "word", sort: {y: "-x"},
+      fill: d => d.word === "ass" ? "#D9762B" : "#2E9E68",
+      tip: {format: {fill: false}},
+      title: d => `${d.word}: ${d.n} times (${d.per_1k_words.toFixed(1)} per 1,000 words)`
+    }),
+    Plot.text(topN, {x: "n", y: "word", text: d => d.n, dx: 4, textAnchor: "start", fill: "currentColor"}),
+    Plot.ruleX([0])
+  ]
+})
+```
+
+Covers the `r length(unique(d("character_word_counts.csv")$speaker))` characters with at least 2,000 words of dialogue; common words and filler are removed.
+
+## How this was done
 
 ::: {.callout-note collapse="true"}
-## Was it true when the episode aired?
-
-<!-- Cumulative counts in airing order, stopping before "War Is the H-Word". -->
-:::
-
 ## Methods and limitations
 
-<!-- 137 of 140 original episodes; stop words; stemming; missing lines; tie ranking. -->
+**Data.** Transcripts of all 140 broadcast episodes from [The Infosphere](https://theinfosphere.org), collected in 2023. The 140 include the four films, which aired as 16 "Part" episodes. Only aggregated counts are published here; the transcripts and scraping code are not.
 
-<!-- DATA RULES: only aggregated counts live in data/. No scraping code, no
-     transcripts, no line-level or token-order data. See README. -->
+**Cleaning.** Most transcript pages had never been split into speaker and line, so I re-split every line on its first colon. That kept `r format(step("Lines with a 2nd colon (kept in full)"), big.mark = ",")` lines that contain a second colon, which my 2023 version cut off. Stage directions in brackets and parentheses are removed from both the speaker and the line. Alternate-universe, robot, and ghost versions of the main cast count as the same character. The result is `r format(step("Clean spoken lines"), big.mark = ",")` spoken lines.
+
+**Words.** Tokenized with tidytext. Common words are removed using tidytext's stop-word lists, plus interjections and filler ("hey," "yeah," "uh," "gonna," and stretched spellings like "ohhhh"). Stemming uses the Porter stemmer. Ties share a rank.
+
+**Why remove filler.** With stop words alone, "hey" edges out "bender" as his top word:
+
+```{r}
+#| label: sensitivity
+#| echo: false
+sens |>
+  filter(rank <= 5) |>
+  group_by(definition) |>
+  summarise(`Top five` = paste0(word, " (", n, ")", collapse = ", "), .groups = "drop") |>
+  mutate(definition = recode(definition,
+    "also excluding fillers" = "Stop words and filler removed (used here)",
+    "tidytext stop words only" = "Stop words only")) |>
+  rename(Definition = definition) |>
+  knitr::kable()
+```
+
+**What changed from 2023.** The original version of this analysis (published on LinkedIn) counted "bender" 375 times. That was inflated: its cleaning removed parenthetical directions but left bracketed ones like "[Bender walks in]" in the dialogue.
+
+**Limitations.** Two episodes are mostly missing from the source: "Naturama" is one unsplit block of text and "Saturday Morning Fun Pit" largely is too, so those blocks are left out. "Zapp Dingbat" and "Meanwhile" have short transcripts at the source. Fan transcripts also miss or mishear some lines.
+:::

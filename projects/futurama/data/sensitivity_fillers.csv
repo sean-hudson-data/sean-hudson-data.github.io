@@ -1,43 +1,22 @@
-definition,scope,rank,word,n
-also excluding fillers,episodes + films,1,bender,237
-also excluding fillers,episodes + films,2,fry,190
-also excluding fillers,episodes + films,3,robot,132
-also excluding fillers,episodes + films,4,time,91
-also excluding fillers,episodes + films,4,wait,91
-also excluding fillers,episodes + films,6,love,81
-also excluding fillers,episodes + films,7,ass,78
-also excluding fillers,episodes + films,8,baby,65
-also excluding fillers,episodes + films,9,kill,64
-also excluding fillers,episodes + films,10,guys,63
-also excluding fillers,episodes only,1,bender,206
-also excluding fillers,episodes only,2,fry,158
-also excluding fillers,episodes only,3,robot,123
-also excluding fillers,episodes only,4,time,84
-also excluding fillers,episodes only,5,wait,83
-also excluding fillers,episodes only,6,love,72
-also excluding fillers,episodes only,7,ass,67
-also excluding fillers,episodes only,8,baby,60
-also excluding fillers,episodes only,9,god,59
-also excluding fillers,episodes only,9,guys,59
-tidytext stop words only,episodes + films,1,bender,237
-tidytext stop words only,episodes + films,2,hey,227
-tidytext stop words only,episodes + films,3,fry,190
-tidytext stop words only,episodes + films,4,yeah,179
-tidytext stop words only,episodes + films,5,robot,132
-tidytext stop words only,episodes + films,6,uh,106
-tidytext stop words only,episodes + films,7,gonna,99
-tidytext stop words only,episodes + films,8,time,91
-tidytext stop words only,episodes + films,8,wait,91
-tidytext stop words only,episodes + films,10,ah,83
-tidytext stop words only,episodes + films,12,ass,78
-tidytext stop words only,episodes only,1,hey,212
-tidytext stop words only,episodes only,2,bender,206
-tidytext stop words only,episodes only,3,yeah,172
-tidytext stop words only,episodes only,4,fry,158
-tidytext stop words only,episodes only,5,robot,123
-tidytext stop words only,episodes only,6,uh,103
-tidytext stop words only,episodes only,7,gonna,91
-tidytext stop words only,episodes only,8,time,84
-tidytext stop words only,episodes only,9,wait,83
-tidytext stop words only,episodes only,10,ah,77
-tidytext stop words only,episodes only,13,ass,67
+definition,rank,word,n
+also excluding fillers,1,bender,206
+also excluding fillers,2,fry,158
+also excluding fillers,3,robot,123
+also excluding fillers,4,time,84
+also excluding fillers,5,wait,83
+also excluding fillers,6,love,72
+also excluding fillers,7,ass,67
+also excluding fillers,8,baby,60
+also excluding fillers,9,god,59
+also excluding fillers,9,guys,59
+tidytext stop words only,1,hey,212
+tidytext stop words only,2,bender,206
+tidytext stop words only,3,yeah,172
+tidytext stop words only,4,fry,158
+tidytext stop words only,5,robot,123
+tidytext stop words only,6,uh,103
+tidytext stop words only,7,gonna,91
+tidytext stop words only,8,time,84
+tidytext stop words only,9,wait,83
+tidytext stop words only,10,ah,77
+tidytext stop words only,13,ass,67

@@ -1,98 +1,87 @@
 speaker,words,content_words,lines
-Bender,45034,14981,4209
-Fry,44510,13480,4505
-Leela,36095,11521,3528
-Farnsworth,29616,10738,2159
-Zoidberg,13393,4642,1151
-Hermes,10141,3687,1014
-Zapp,8519,3072,585
-Amy,8238,2781,1063
-Mom,2950,1144,216
-Nixon,2884,1182,206
-Kif,2856,952,290
-Calculon,2444,900,203
-Futurama presents,2189,784,1
-Nibbler,1952,687,135
-Lrrr,1825,649,149
-Nine,1750,680,102
-Mr. Wong,1670,639,142
-Morbo,1600,776,104
-Narrator,1536,648,58
-Cubert,1470,527,163
-Linda,1456,677,93
-Nudar,1354,472,125
-LaBarbara,1234,385,106
-Robot Devil,1201,414,93
-Greyfarn,1154,458,64
-Donbot,1118,366,72
-Titanius Anglesmith,1068,407,74
-Wernstrom,1042,373,97
-Elzar,1027,380,88
-Lars,894,263,85
-Hutch,878,267,69
-Yivo,876,242,56
-Roberto,862,284,72
-Announcer,858,440,56
-Dwight,835,289,104
+Bender,40868,13565,3849
+Fry,40416,12261,4103
+Leela,33210,10544,3236
+Farnsworth,26778,9659,1962
+Zoidberg,10510,3579,1042
+Hermes,9138,3317,903
+Amy,7481,2524,951
+Zapp,7417,2664,512
+Kif,2570,855,254
+Mom,2495,975,185
+Nixon,2325,942,162
+Calculon,2077,751,166
+Lrrr,1757,626,145
+Narrator,1462,625,55
+Nibbler,1446,503,105
+Cubert,1349,480,145
+Linda,1309,618,81
+Morbo,1304,627,87
+Robot Devil,1158,401,91
+Mr. Wong,1044,392,90
+LaBarbara,1026,318,86
+Elzar,936,342,80
+Donbot,900,300,59
+Nine,897,345,54
+Wernstrom,812,287,71
+Announcer,759,393,52
+Roberto,759,244,64
 Alcazar,734,243,44
-Walt,697,249,77
 Poopenmeyer,679,280,46
-Sal,670,280,77
-URL,670,268,85
+Dwight,673,226,87
 Zoid,669,221,31
-Man,661,236,75
+Nudar,667,232,62
+Man,655,235,73
 Coilette,642,179,48
-Frydo,636,202,60
-Colleen,628,178,56
+URL,617,248,80
 Tate,596,230,46
-Santa,579,211,52
+Greyfarn,574,229,31
 Steve Castle,573,215,35
-Clamps,550,190,55
-Michelle,542,161,40
-Scruffy,542,217,83
-Smitty,533,203,56
+Sal,562,235,62
+Walt,535,188,59
+Titanius Anglesmith,526,201,35
 Morgan,525,180,38
+Michelle,520,153,38
 Travers,520,189,37
-Leegola,519,154,42
-Grand Midwife,516,173,27
+Smitty,509,192,55
+Scruffy,508,204,74
 Hyper-Chicken,504,193,28
-Munda,497,144,41
-Preacherbot,486,202,35
+Clamps,484,171,49
 Waterfall Sr.,478,200,27
+Santa,477,173,40
+Munda,474,134,39
+Preacherbot,470,194,33
+Hutch,456,140,37
 Ship,446,136,41
-Morris,445,114,35
-Mrs. Wong,444,155,41
-Frida,432,136,45
+Lars,443,131,42
+Yivo,434,119,28
 Adlai,430,120,27
+Morris,430,109,34
 Beck,428,136,42
-Randy,413,151,43
 Big rock Alien,409,140,20
-Panucci,405,125,27
 Melllvar,398,134,30
+Randy,398,145,40
 Ken,392,148,25
-Penn Jillette,390,174,14
 Gore,386,145,27
-Dr. Schlovinowitz,378,126,20
 Thubanian Leader,373,157,18
 Abner Doubledeal,367,150,21
-Dr. Perceptron,365,144,36
-Hedonism Bot,348,138,33
+Mrs. Wong,349,119,33
 Flexo,345,104,36
-Petunia,344,118,34
+Grand Midwife,340,113,18
 Yancy Fry Sr,336,140,20
-Hattie,335,115,38
 Glurmo,334,123,24
-Hedonismbot,327,104,21
+Hattie,329,113,36
 Salesman,326,113,26
 Singing Wind,319,116,23
 Edna,316,102,20
+Colleen,314,89,28
 Ndnd,313,97,27
 Vogel,313,99,18
 Mrs. Astor,312,117,21
+Frydo,307,98,29
 Uecker,307,121,10
 Gypsy,305,107,21
-Dr. Cahill,304,125,22
-Reflection Host,300,84,14
+Petunia,303,105,30
 Guenter,299,88,21
 Raoul,297,101,24
 Angle-ine,295,80,29
@@ -100,101 +89,93 @@ Shatner,293,89,29
 Big Brain,290,110,21
 Woman,288,110,35
 Song,283,103,13
-Fanny,282,100,25
 Nimoy,282,89,32
-Bubblegum,279,139,29
+Panucci,281,91,19
 Old Man Waterfall,279,96,11
+Hedonismbot,278,91,18
 Nd-Nd,276,90,31
 Doubledeal,270,101,18
 Man #1,269,102,29
-Larry,262,73,48
+Leegola,266,81,21
 Albert,259,106,28
-Hermaphrodite,257,103,22
 Welles,254,98,8
 Spargle,253,93,15
-Zoidberg Head,249,77,16
 McMasters,247,85,8
-Momon,242,80,20
 Yancy,241,81,25
-British Robot,240,61,15
-Igner,239,77,45
 Whitey,239,99,13
 Mr. Fry,238,87,16
+Dr. Cahill,236,94,16
 Leonardo,234,87,19
-Seth MacFarlane,234,54,2
 Nikolai,232,94,17
 Animatronio,229,98,12
 Glab,226,95,15
 Unattractive giant monster,226,69,16
-Tinny Tim,224,101,30
 Ipgee,222,59,15
 Bev,219,72,19
+Larry,219,62,39
+Dr. Perceptron,210,78,23
+Tinny Tim,210,95,28
 Fiona,209,83,16
+Frida,208,65,22
 Gilman,208,71,16
 Vernon,208,79,14
 Ben,207,55,23
-George Takei,207,78,9
 Nichols,206,93,17
 Malachi,205,80,17
-Fleb,204,79,21
 Chief O'Mannahan,202,78,13
 Joey,201,71,14
 Banjo,200,86,10
-Reflection Host 2,198,52,10
+Hedonism Bot,196,76,21
+Penn Jillette,195,87,7
 Takei,194,65,17
 Hiroki,191,89,11
+Dr. Schlovinowitz,189,63,10
 Dwayne,188,71,21
-Gynecaladriel,188,67,18
-Monique,187,63,15
 Robot Leela,186,66,17
-YIVO,186,62,8
 Femputer,185,73,11
 Liu,181,68,17
 Merg,181,73,15
 High Priest,180,67,11
 Osiran,180,78,14
 Pickles,179,55,6
-Bailiff,178,86,13
 Umbriel,177,62,15
 Ranger Park,173,59,14
 Angus McZongo,172,68,11
 Marianne,172,50,16
+Igner,171,56,33
 Sally,171,61,19
 Man #2,169,73,20
 Beastie Boys,168,60,6
 Countess,168,59,18
 Slurms,167,55,16
+Bubblegum,166,84,17
 Network President,164,71,12
 Waterfall Jr.,164,67,22
 Thog,161,78,20
-Warden Vogel,161,59,10
 Tour Guide,159,66,7
+Warden Vogel,158,58,9
 Whale Biologist,158,61,11
 Blek,156,67,13
 Robot,156,56,19
 Fnog,155,52,10
-Ron Whitey,154,66,13
-"""God""",153,28,15
+George Takei,155,57,8
 Barker,153,58,11
-Rich Little,153,68,7
+"""God""",152,28,14
+Monique,151,52,13
 Lisa,150,43,12
-Neptunians,149,75,22
-Schlump,149,71,25
+Reflection Host,150,42,7
 Slurm Queen,149,50,11
 Gang,147,46,11
-Waltazar,147,52,19
-Leroy,146,52,8
-ALL,145,54,37
 Billy West,145,55,14
 Colonel,145,64,11
-Warden,145,76,7
+Ron Whitey,145,63,12
 Zookeeper,145,48,13
-Farmer,144,62,14
 Ambassador Mervin,143,64,10
 Commentator,143,70,9
+Fanny,143,52,14
 Queen,141,61,10
+Farmer,140,59,13
 Horrible Gelatinous Blob,140,45,9
-Joey Mousepad,140,39,17
 Judge 724,140,61,12
 Robot Mayor,140,55,10
 Ab-Bot,138,45,9
@@ -204,25 +185,28 @@ Monk #1,131,41,7
 Chaz,130,38,9
 Enos,128,45,12
 Antarian #1,127,47,8
+Bailiff,127,63,10
+Hermaphrodite,127,51,11
 Liubot,127,49,16
 Mrs. Fry,126,47,15
+Neptunians,126,57,17
 Merchant,125,41,10
 Paul Revere,125,55,5
-Billionaire Bot,124,44,8
 Decapodian Emperor,123,49,7
-Encyclopod,122,54,10
 Worm Mayor,122,46,8
+Momon,121,40,10
 Robot #1,121,46,16
 Doctor,118,37,14
 McNeal,118,43,5
 Donovan,117,56,4
 Reverend Preacherbot,117,51,5
-Transition Announcer,117,53,19
+Seth MacFarlane,117,27,1
 Blond man,116,55,8
 Truman,116,43,8
 Number 1.0,115,42,5
 Teacher,115,43,8
-Judge Dogg,114,42,8
+British Robot,114,28,7
+Zoidberg Head,114,35,8
 Greeting Card,112,49,10
 Minx,112,39,8
 Tonya,110,34,10
@@ -234,53 +218,46 @@ Kwanzaa-bot,106,37,11
 Dandy Jim,105,39,8
 Skipper,105,27,5
 Vyolet,105,37,17
-Fishy Joe,104,38,9
+Transition Announcer,104,50,16
 Boy,103,40,14
 Heather,103,42,5
 Shore,103,51,6
-Al Gore,102,44,14
-Farnsworth Monkey,102,32,6
 Robot #2,102,33,15
 Josh Gedgie,101,44,8
 Grrrl,100,30,10
 Paper-hatted salesman,100,51,14
 Foreman,99,35,6
 Jeff Jervis,99,33,6
+Reflection Host 2,99,26,5
 Blue Elder,98,32,11
-Father Changstein-el-Gamahl,98,36,4
 Jeffery,98,29,7
+Fishy Joe,97,34,8
 Gary,97,22,12
-Mayor Poopenmeyer,96,32,6
+Joey Mousepad,96,27,13
 Lando Tucker,95,37,10
-Nurse Ratchet,95,33,10
 Clerk,94,36,7
-Stephen Hawking,94,22,11
+YIVO,93,31,4
+Fleb,92,40,10
 Popeil,92,42,3
 Gus,91,38,10
-Turanga Morris,91,33,4
 Beeler,90,35,8
+Gynecaladriel,90,32,9
 Holo-Zoidberg,90,31,6
-Ignus,90,21,15
 Myrtle Fu,90,37,7
 Old Leela,90,26,7
-TV Anchorman,90,46,4
 Teller,90,29,7
 Waiter,90,40,9
-Younger Mom,89,36,9
 Basil,88,29,7
 Bont,88,30,8
-Slim,88,24,12
-Turanga Munda,88,32,7
 Referee,87,47,9
 Robot Santa,87,41,6
 Judge #1,86,41,3
-Morcs,86,49,8
 O'Brien,86,30,4
 Nina,85,25,9
 Rivers,85,35,3
-Crowd,84,51,27
 Lady Buggle,84,27,6
 Susan,84,34,10
+Crowd,83,51,26
 Leela's grandmother,83,29,1
 Subtitle,83,39,7
 Unit 2013,83,28,6
@@ -289,30 +266,31 @@ Bella,81,27,7
 Girl,81,32,8
 Judge,81,32,6
 Man #3,81,28,7
-Mysterious Voice,81,24,9
+Mayor Poopenmeyer,81,29,4
 Contrabulous Choosematron,80,47,9
-Dixie,80,26,12
 Sheldon,80,34,5
 Anderson,79,23,9
-Terry,79,30,13
+Rich Little,79,36,4
 Director,78,29,9
-Fender,78,32,9
 Koenig,78,29,11
-Robot 1-X,78,28,14
+Waltazar,78,30,9
 Announcer #2,77,38,7
 Mother,77,29,7
+Nurse Ratchet,77,27,8
 Robot Stack,77,24,6
 Scoop Chang,77,42,4
-Hoschel,76,33,13
-Schlomo,76,20,6
 Execu-Tor,75,33,3
 Fabricio,75,26,6
+Fender,75,31,8
+Schlump,75,33,12
+Terry,75,29,12
 Bertha,74,23,6
 Jackie,74,24,5
-Larius,74,23,8
+ALL,73,27,19
 Female voice,73,38,8
 Humorbot 5.0,73,27,3
 Leo,73,30,8
+Leroy,73,26,4
 Changstein el Gamahl,72,20,4
 Hawking,71,21,11
 Hydroponic farmer,71,31,5
@@ -320,7 +298,6 @@ Kug,71,28,12
 Butch,70,21,8
 Inez,70,22,6
 Little Hermes,70,21,8
-All,69,26,20
 Gang Man,69,27,4
 Holo-Roseanne,69,25,2
 Huge Brain,69,31,6
@@ -330,7 +307,7 @@ Fry's Photo,68,18,5
 Teen #1,68,29,8
 Widnar,68,27,7
 Delivery-Boy Man,67,29,6
-Chinese Boy,66,22,14
+Warden,67,34,3
 Esther,66,17,8
 The Scary Door narrator,66,25,1
 Aide #2,65,24,11
@@ -338,24 +315,23 @@ Annie,65,26,2
 Buzz Aldrin,65,26,3
 Dogg,65,23,5
 Fat-bot,65,25,9
-Suicide Booth,64,26,6
+Hoschel,65,29,10
+All,63,24,17
 Borax Kid,63,26,2
-Nibblonian,63,25,12
 Organ Dealer,63,19,6
+Robot 1-X,63,20,10
 Announcer #1,62,32,4
+Billionaire Bot,62,22,4
 Cronkite,62,27,1
 Little,62,20,5
-Ndulu,62,18,14
+Mysterious Voice,62,18,7
 Van,62,28,4
+Encyclopod,61,27,5
 Commissioner,60,23,4
-Destructor,60,28,9
 Florp,60,21,3
 Soldier #1,60,20,6
-Sweet Clyde,60,18,6
 Father,59,12,5
 Katz,59,34,7
-Philip J. Fry II,59,15,8
-"""'Santa",58,20,2
 April,58,15,7
 Auctioneer,58,23,8
 Kwanzaabot,58,20,4
@@ -371,70 +347,62 @@ Antonio,56,18,4
 Brain Ball #1,56,22,5
 Cyclops,56,15,3
 Decapodian Woman,56,15,5
-Rosie,56,24,4
 Ruth,56,18,7
-Trixie,55,23,9
 Yancy Fry Jr,55,27,7
 Yokelbot,55,23,5
 iHawk,55,16,5
 Gygax,54,17,6
-Feministas,53,26,4
 Aaron Sr.,52,16,4
-Leo Wong,52,20,8
 RJ,52,18,7
 Snake,52,16,5
+Sweet Clyde,52,15,5
+Turanga Munda,52,19,4
 V-GINY,52,27,6
 iZac,52,16,9
+Al Gore,51,22,7
 Center Square Guy,51,19,7
 Doctor #2,51,11,5
-"Mysterious, Sinister Voice",51,16,6
+Farnsworth Monkey,51,16,3
 Robots,51,25,6
 Superior Gort Judge,51,18,5
 """Cosell""",50,27,1
 Chris Travers,50,15,2
-Inuit #2,50,16,6
 Inuitbot,50,23,3
-Killbot 2,50,10,6
-Tester,50,34,4
+Stephen Hawking,50,11,6
 The Scary Announcer,50,20,1
-Barbados Slim,49,21,5
 Computer Voice,49,24,9
+Father Changstein-el-Gamahl,49,18,2
 Lady #1,49,19,3
 Male voice,49,24,6
-Stephen Hawking's head,49,21,6
 Bully,48,18,3
-Cryogenicist,48,10,2
-Curly Joe,48,17,4
-Dark One,48,12,2
 General,48,19,6
 Gwen,48,20,4
 Janitorbot,48,13,3
 Singer,48,20,5
+Turanga Morris,48,19,2
 Billy,47,15,5
 George Takei's head,47,18,2
 Invader X,47,15,6
-Amy's computer,46,28,4
+Younger Mom,47,19,5
 Cartridge Unit,46,16,6
 Farnswoth,46,18,3
 First Elder,46,13,3
 German #1,46,16,5
-Hermaphrobot,46,19,3
 Small Glurmo #1,46,18,6
 Whalerbots,46,16,4
-Bartender,45,14,8
+Barbados Slim,45,18,4
 Craterface,45,17,4
-De Gaulle,45,23,5
 Jrrr,45,15,4
 Pac-Man,45,20,5
 Planet Express crew,45,14,4
 Sergeant,45,19,5
-Centaur Opponent,44,14,2
-Fatbot,44,10,4
+TV Anchorman,45,23,2
+Dixie,44,15,7
 Gorgak,44,17,5
-Guard #1,44,13,8
 Helper,44,14,4
 Labarbara,44,16,6
 Nixon's campaign manager,44,16,3
+Slim,44,12,6
 Smith,44,15,3
 Washington,44,23,6
 Galactic Entity,43,10,1
@@ -442,121 +410,113 @@ Garfunkel,43,18,4
 Kids,43,26,7
 Malachi Jr.,43,16,3
 Malfunctioning Eddie,43,16,6
-Plastic Surgeon,43,8,3
 Poppler,43,23,5
-Richard Nixon's head,43,22,6
 Technician,43,20,7
 Teenaged Alien,43,14,8
 Dr. Daniel Zenus,42,15,4
 Green Alien,42,19,3
+Ignus,42,10,7
+Morcs,42,23,4
 Patch Cord Adams,42,9,4
 Crystal,41,15,2
 Hermenthotip,41,9,5
-Human Friend,41,14,6
 Project Satan,41,21,3
 Barrierbot #1,40,15,7
 Dr. Banjo,40,15,2
 Hick,40,21,5
-Monkey,40,13,4
 Old man,40,13,4
 Ornik,40,12,7
 Robot Fry,40,15,8
 Salesman #1,40,17,3
 Bret,39,13,5
-Farsnworth,39,23,3
 Gearshift,39,15,3
+Guard #1,39,13,7
 Jackson,39,7,3
 Mandy,39,11,2
 Monk #2,39,12,3
 Mr. Astor,39,16,1
 Mutated Mark Mothersbaugh,39,16,4
-Uncle Zoid,39,12,1
 Brain Ball #2,38,12,2
-Enema Bot,38,22,6
+Destructor,38,17,6
+Fatbot,38,8,3
 Joe,38,15,3
+Schlomo,38,10,3
 Wailing Fungus,38,12,1
 Brain #2,37,19,5
 Crushinator,37,14,7
 Humplings,37,15,3
 Mechanic,37,15,2
+Richard Nixon's head,37,18,5
 Yuri,37,15,4
-'Mr. Wong,36,10,2
 Aragonés,36,10,2
 Barrierbot #2,36,13,4
 Bee #1,36,17,3
-Convenience Store Bot,36,5,2
 Man #4,36,18,5
 Mr. Moviefone,36,16,3
 Robot Farmer,36,13,1
 Snoop Dogg's head,36,12,1
 Aide #1,35,12,6
-Bolt,35,11,6
-Carnival Barker,35,13,1
 Cryogenisist,35,10,3
+Curly Joe,35,11,3
 Emcee,35,18,2
 Farnsworth 420,35,11,3
 Female inhabitant,35,15,3
 Holo-Robot Devil,35,10,2
+Human Friend,35,11,5
+Nibblonian,35,13,7
 Ride Barter,35,13,1
 Robo-Puppy,35,32,3
+Stephen Hawking's head,35,15,5
 White Robot,35,13,3
 Actress,34,10,1
-Antonin Scalia's Head,34,14,2
 Australian Man,34,11,4
 Centipede man,34,8,5
-Dwarf,34,18,2
-Fat Man,34,10,6
 Green Elder,34,10,5
-Inuit #1,34,8,4
-Nixon's Head,34,12,3
 Robotic gas forms,34,10,1
 Schiffer,34,12,3
 Slurm Machine,34,17,3
-Snoop Dogg,34,20,4
 Stewart,34,14,5
 Vandal #2,34,13,3
+Chinese Boy,33,11,7
 Hooded Figure #1,33,12,8
 Robot Devil's ghost,33,12,1
 Sheriff Burley,33,14,2
 Female Announcer,32,18,7
 Groening,32,9,3
-Indian Boy,32,6,5
 King,32,14,2
-"Nudar, Fleb and Schlump",32,18,2
+Suicide Booth,32,13,3
 Suicide booth,32,9,3
 Ben Beeler,31,13,2
 Fratbot #1,31,11,3
-Inger,31,14,5
+Ndulu,31,9,7
 P.A. Announcer,31,16,2
 Robot Student,31,10,3
 Tattoo #1,31,12,3
+Trixie,31,13,6
 Wash bucket,31,11,4
 David Farsnworth's head,30,11,1
 Grumpy Snail,30,13,1
 Holo-Farnsworth,30,8,2
-Killbot 1,30,3,7
 Mark 7-G,30,9,4
 Moon Patrolman #1,30,12,3
 Mrs. Mellonger,30,10,2
-Ogre,30,8,4
-Pazuzu,30,12,3
 Randy Munchnik,30,12,3
 Salesman #2,30,12,3
 Ultra Guy,30,13,3
+"""'Santa",29,10,1
 Female Voice,29,14,3
 Johnson,29,8,3
 N.R.A. Man,29,12,2
 Old Hermes,29,11,2
+Philip J. Fry II,29,8,4
 Policeman #1,29,7,3
-Female Centaur,28,12,4
+Bartender,28,8,5
 Holo-Bender,28,14,1
-Michael,28,7,7
 Pawnbroker,28,9,3
 Pirate,28,17,3
 Radio announcer,28,13,1
+Rosie,28,12,2
 Scientist,28,9,2
-Ship's Computer,28,14,4
-Soldier,28,12,4
 Yellow and red manbot,28,11,1
 Chet,27,9,4
 FART Mob,27,9,2
@@ -571,12 +531,15 @@ Security Guard,27,11,6
 TV Commentator,27,16,1
 Ad-Rock,26,6,4
 Chainsaw-Eating Robot,26,13,3
-Clarence Thomas' head,26,10,2
+De Gaulle,26,13,3
 Doctorbot,26,13,2
 Elders,26,0,1
+Hermaphrobot,26,10,2
 Hobsy,26,12,4
-Lrrr's Father,26,6,2
+Larius,26,7,4
+Leo Wong,26,10,4
 Military Man,26,7,2
+Monkey,26,10,3
 Neutral President,26,5,3
 Nurse,26,10,4
 Operator,26,9,3
@@ -588,58 +551,57 @@ Suzie,26,9,4
 Amana,25,10,3
 Biff,25,12,4
 Dr Cahill,25,9,3
+Feministas,25,12,2
 Foreigner,25,10,2
-Guard,25,13,3
-Intercom Assistant,25,11,6
+Inuit #2,25,8,3
+Killbot 2,25,6,4
 Kirk,25,6,3
 Mike,25,6,4
 Scalia,25,11,2
+Tester,25,17,2
 """Fembot""",24,9,2
 Booth Voice,24,11,3
 Brain #1,24,8,3
 Caveman,24,9,1
 Chef,24,6,3
+Cryogenicist,24,5,1
+Dark One,24,6,1
 Erwin Schrödinger,24,9,2
 Farnsowrth,24,6,1
 Feffernoose,24,9,2
-Giant medium-sized ant,24,6,2
 McGee,24,11,1
 Paco,24,7,4
-Robot Slave,24,4,4
+Pazuzu,24,10,2
 Space Pope,24,10,2
 Vendor,24,10,3
-"Yancy Fry, Jr.",24,6,2
 Ahab,23,8,3
 Aki,23,7,1
+Amy's computer,23,14,2
 Bill Morrison Robot,23,7,1
 Brown-haired man,23,9,2
 Coffee Machine,23,5,5
 Darth Sploder,23,11,5
 Decapodian Man,23,5,2
-Featuring,23,19,1
 Geneworks Woman,23,9,2
 Grade 20 Bureaucrat,23,4,2
 Grade 41 Bureaucrat,23,8,3
 Hairbot,23,10,2
-Hutch Waterfall,23,6,2
 M-5438,23,9,1
 Minx to Zoidberg,23,7,1
 Shrimpkin Priest,23,11,3
 Superior Gort Prosecutor,23,13,2
 Suz,23,9,3
+Bolt,22,7,4
+Centaur Opponent,22,7,1
 Computer,22,15,3
 Cylon,22,9,3
 Fembot #1,22,7,2
 Grunka Lunka #2,22,8,3
-Head cleaner,22,16,4
 Horn loudspeaker,22,10,2
 Leela Actress,22,8,3
-MC,22,14,4
-Michael's Wife,22,8,2
 Mombot,22,6,1
 Mr. Sunbeam,22,6,2
 Mutant #2,22,6,2
-Ogres,22,16,2
 Old Man,22,10,4
 Vandal #1,22,5,3
 21st-century girl,21,9,2
@@ -649,7 +611,7 @@ Chain Smoker,21,11,2
 Farnswsorth,21,10,1
 George H.W. Bush,21,9,1
 Grunka Lunka #1,21,7,2
-Guard #2,21,8,4
+Guard,21,12,2
 Moustached Alien,21,6,1
 Thomas Jefferson's head,21,9,3
 Underwater house salesman,21,6,1
@@ -657,33 +619,30 @@ Alien,20,7,3
 Barbados,20,8,3
 Bee #3,20,4,2
 Bender duplicate B,20,2,1
-Crazed Fan,20,8,4
 Dan McMasters,20,10,1
 Dean Suspendington,20,7,1
 Farnworth,20,8,1
+Farsnworth,20,12,2
 Garbage Disposal,20,8,1
 Judge 723,20,8,1
 Machine,20,10,2
 Man #5,20,10,2
-Miss Vega 4,20,12,2
 Mutants,20,9,4
 Old lady,20,9,3
-Peasent Cook,20,10,4
 Robot #4,20,10,3
 Sebastian Cabot,20,5,2
 Slave #1,20,7,2
 Soda machine,20,7,1
 The Hip Joint janitor,20,4,1
 Trash Can,20,8,1
-Voice,20,12,4
 Bee #4,19,3,1
 Bender and the protestors,19,5,2
 Butch's Girlfriend,19,9,4
 Candidate 2,19,5,2
 Captain,19,7,1
 Doorman,19,4,2
+Enema Bot,19,11,3
 Great Reveal-o,19,8,1
-M5438,19,9,1
 Mario,19,11,1
 Princess Num Num,19,9,2
 Prototype,19,9,2
@@ -692,11 +651,9 @@ Robot builder,19,2,2
 Second Elder,19,9,2
 Single Female Lawyer,19,9,1
 Zoidsmythe,19,6,3
-Administrator,18,16,4
+'Mr. Wong,18,5,1
 Bender duplicate #1,18,4,1
 Bill Clinton's head,18,9,1
-Card,18,10,1
-Chu,18,4,10
 Crack Addict,18,4,2
 Croupier,18,10,3
 Darth Stroyer,18,4,2
@@ -705,9 +662,10 @@ Five-Eyed Woman,18,4,2
 Flying Spaghetti Monster,18,7,1
 Franklin,18,7,1
 Gopher #1,18,9,2
+Inger,18,7,3
 Jim,18,5,1
 Lady #3,18,9,1
-Lincoln,18,10,2
+Michael,18,4,4
 Morris Katz,18,8,1
 Namgyal,18,6,1
 Nerd,18,8,2
@@ -716,107 +674,94 @@ Priest,18,5,2
 Protestor #3,18,6,2
 Septic tank,18,4,1
 Yancy's wife,18,4,2
-Younger Wernstrom,18,10,2
-'Momon,17,9,2
 7¹¹ Clerk,17,4,1
 Donkey Kong,17,7,1
+Dwarf,17,9,1
 Emperor Chop Chop,17,7,2
+Fat Man,17,5,3
 Female Scientist,17,5,1
 Flatbush lords,17,7,2
 Gammabot,17,4,2
 Horrible Gelatinous Hick,17,4,1
+Inuit #1,17,4,2
+Killbot 1,17,2,4
 Koji,17,14,6
 Liubot #2,17,3,3
 Male voice #2,17,8,1
 Mermaid,17,7,3
 New Farnsworth,17,6,2
 Phone,17,7,2
+Plastic Surgeon,17,3,1
+Snoop Dogg,17,10,2
 Torgo's Jingle Singer,17,7,1
 Aide #3,16,7,1
-Amy ',16,6,2
-Baggy,16,6,2
 Big Bertha,16,2,1
 Brain #3,16,5,1
 Clark,16,8,1
 Doingg,16,7,2
 Flavia,16,7,4
-"Fry, Amy, Zoidberg, Bender, Tinny Tim, and Nibbler",16,6,2
 Gang man,16,5,2
-MOM COMPUTER,16,8,2
-Mad Fellow,16,6,4
 Mrs. Grant,16,5,2
+"Nudar, Fleb and Schlump",16,9,1
 Pathologist #1,16,11,3
-Planet Express Ship Alarm,16,8,2
 Robot Monks,16,0,1
 Schumlp,16,4,1
 Soda Machine,16,4,2
-TV Announcer,16,6,2
 'Angle-ine,15,3,3
 Alarm Clock,15,6,1
 Barman,15,8,2
 Cosmetologist,15,4,1
-Elevator Steward,15,7,3
 Galaxy,15,3,3
 Holo-Vogel,15,8,1
 Leela and Female Voice,15,7,1
 Little girl #1,15,5,1
 Lou,15,3,3
-Mad Hatterbot,15,8,5
 Martian #3,15,5,1
 McMaster,15,4,1
 Mexican Man,15,6,2
 Mine Spokesman,15,4,1
 Neptunian Salesman #1,15,8,3
+Ogre,15,4,2
 Photographer,15,5,1
 Robot Human,15,7,1
 Senator,15,2,2
 Street racing gang,15,7,1
 Warren Harding's head,15,4,1
-Amy Wong,14,2,2
 Bender and Fry,14,13,3
 Blorgulax,14,3,1
 Camera,14,2,1
 Clinton,14,6,1
-Crazy Guy,14,8,2
-Crew,14,4,7
 Dark Wizard,14,5,2
 Decapodian Man #1,14,6,2
-Feminista,14,2,4
 Franklin D. Roosevelt's head,14,4,1
 Garbly,14,7,2
 Holo-Fry,14,8,1
-Hooded Robot,14,10,4
 John Adams,14,3,3
 Left Bender duplicate,14,1,2
 Male inhabitant,14,4,2
 Male voice #3,14,10,1
 Moriarty,14,7,1
-Mr Wong,14,0,2
 Octopus,14,4,1
-Phil,14,4,2
 Queequeg,14,6,2
-Ruth Bader Ginsburg's head,14,8,2
+Ship's Computer,14,7,2
+Soldier,14,6,2
 Stoned Guy,14,3,2
-Striped biologist-taunter,14,2,2
 Surgeon,14,8,2
-Swamp Hag,14,4,2
 Thundercougarfalconbird salesman,14,6,1
-Treedledum,14,4,2
 Actor 2,13,5,1
 Andrew Jackson's head,13,5,1
 Beserk,13,6,2
 Billy's Dad,13,6,1
 Carter,13,5,1
+Clarence Thomas' head,13,5,1
+Crew,13,3,6
 Cygnoid #3,13,5,1
 Doug,13,4,1
-Electronic Voice,13,8,2
-H.G. Blob,13,7,3
-Hattie McDoogal,13,5,3
 Hedonism bot,13,5,1
 Infosphere,13,9,1
 Jockey,13,2,2
-Killbot 3,13,3,3
 Leelis Lane,13,5,2
+Lrrr's Father,13,3,1
 Mavis,13,2,1
 Meiderneyer,13,5,2
 Mom Cut-Out,13,4,2
@@ -829,7 +774,6 @@ The Force,13,6,1
 Toilet,13,4,1
 Travers' P.R. guy,13,3,2
 Whalerbot,13,5,2
-'Boobs Vanderbilt,12,4,2
 270 00,12,4,1
 285 00,12,1,1
 298 00,12,2,1
@@ -838,41 +782,35 @@ Whalerbot,13,5,2
 354 00,12,3,1
 Animated Revere,12,4,1
 Antonin Scalia's head,12,3,1
-Bender's First Born Son,12,2,2
 Betabot,12,4,3
 Big-Eared Mutant,12,4,1
 Candy,12,3,2
 Carnie,12,7,1
-Danny,12,4,2
 Deformed man,12,6,1
 Dole,12,8,1
 Elf,12,6,1
 Female CDC scientist,12,6,2
+Female Centaur,12,5,2
+Giant medium-sized ant,12,3,1
 Hippie #1,12,4,2
 Hooded Figure #2,12,2,3
 John Tyler's head,12,5,1
 Judge 802,12,4,1
-Kwanzabot,12,10,8
-Man walking on screen,12,4,2
+Lincoln,12,6,1
 Mexican border patrolman,12,7,2
-Mr. Kroker,12,4,4
-Mrs. Kroker,12,2,2
 Neutral President's Aide,12,5,2
+Robot Slave,12,2,2
 Robot guard #1,12,6,4
 Sam,12,6,4
 Scanner,12,8,1
-Security Woman,12,8,2
-Shop Owner,12,6,2
 Squire,12,6,1
-Staff,12,6,12
 Stenographer,12,3,2
-Super Hero,12,0,2
 Tom Sawyer,12,4,2
 Trekkie #1,12,4,2
 Trekkie #2,12,4,1
 Trucker,12,3,1
 Woman #2,12,4,3
-Worm Announcer,12,6,2
+"Yancy Fry, Jr.",12,3,1
 151 00,11,5,1
 159 00,11,3,1
 208 00,11,3,1
@@ -892,14 +830,20 @@ Cheney,11,4,1
 Frieda Waterfall,11,6,1
 Gas,11,5,1
 German #2,11,6,1
+Guard #2,11,6,3
+Head cleaner,11,8,2
 Hookerbot,11,6,3
 Horrible Gelatinous Stockbroker,11,5,1
+Intercom Assistant,11,4,3
 John Hancock,11,5,3
 Leela's finger,11,4,1
 Leg Mutant,11,2,4
+MC,11,7,2
+Michael's Wife,11,4,1
 Natalie,11,2,1
 Neptunian Salesman #2,11,7,1
 Nerd #2,11,5,1
+Ogres,11,8,1
 Oily,11,4,1
 Priests,11,3,3
 Q-Bert,11,3,1
@@ -929,48 +873,42 @@ Woman #4,11,1,2
 428 00,10,3,1
 46 00,10,3,1
 75 00,10,2,1
-ALL YIVOS,10,4,2
 Aide #4,10,3,2
 Amazonian,10,4,2
-Bender Doll,10,8,2
-Boobs Vanderbilt,10,4,2
 Butler,10,4,1
 Candidate 1,10,3,2
-Chanukah Zombie,10,6,4
 Chrissy,10,1,1
 Cohen,10,3,1
+Crazed Fan,10,4,2
 David Farnsworth,10,6,2
 Dr. Widnar,10,3,1
 Evans,10,5,2
 Farnsworth ’’,10,2,1
 Frame #1,10,5,1
-Francine,10,8,4
-Frida Waterfall,10,4,2
 Garry Gygax,10,4,1
 Hoverfish,10,5,1
+Hutch Waterfall,10,3,1
+Indian Boy,10,1,2
 Lackey,10,5,2
 Lane,10,5,1
 Liubot #3,10,10,3
 Macaulay Culkon,10,4,1
+Miss Vega 4,10,6,1
 Monk #3,10,3,1
 Mr. Peppy,10,6,1
 Nerd #1,10,1,1
-Nurse Rachet,10,4,1
-OTHERS,10,4,2
 Old Amy,10,7,1
 Old Cubert,10,3,2
+Peasent Cook,10,5,2
 Plumber,10,3,1
-Pocket Pal,10,8,2
 Right Bender duplicate,10,4,2
 Roller-Skater,10,6,1
-"Santa, Chanukah Zombie and Kwanzabot",10,4,2
 Shpeekenshpell,10,6,3
 Sims Woman,10,1,1
 Suspiciously fantastic apartment salesman,10,3,1
-Tex Connecticut,10,0,4
 V.A.P. Man,10,3,3
+Voice,10,6,2
 Woman #1,10,4,3
-Younger Farnsworth,10,4,6
 102 00,9,3,1
 113 00,9,5,1
 114 00,9,1,1
@@ -1007,12 +945,15 @@ Younger Farnsworth,10,4,6
 426 00,9,4,1
 77 00,9,3,1
 87 00,9,4,1
+Administrator,9,8,2
 Andrew,9,3,2
 Barack Obama,9,2,1
 Bee,9,7,5
 Candidate 3,9,1,1
+Chu,9,2,5
 Cygnoid #2,9,3,3
 Director #2,9,3,1
+Elevator Steward,9,5,2
 "Farnsworth, Zoidberg, Hermes, Amy and Bender",9,6,1
 Frame #2,9,3,1
 Future Bender,9,3,1
@@ -1029,13 +970,12 @@ Plumber-bot,9,2,1
 Pramala,9,2,1
 Professor Farnsworth and Zoidberg,9,0,1
 Repo-bot,9,3,2
-Ruth Ginsberg's Head,9,3,1
 Rutherford B. Hayes' head,9,6,1
 Sibling #1,9,2,1
 Waitress,9,4,2
 Wernstrom's Killbot,9,3,1
 Wrist Machine,9,9,1
-'Rich Little,8,2,2
+Younger Wernstrom,9,5,1
 108 00,8,4,1
 137 00,8,2,1
 147 00,8,2,1
@@ -1075,7 +1015,9 @@ Wrist Machine,9,9,1
 76 00,8,4,1
 Abraham Lincoln's head,8,3,1
 Actor 1,8,3,2
+Amy ',8,3,1
 Armband,8,2,1
+Baggy,8,3,1
 Bendee Boo,8,7,3
 Billy's Mom,8,3,1
 Bottomless Boy,8,4,1
@@ -1087,26 +1029,27 @@ Criminal,8,3,1
 Cyclopian Man #1,8,0,1
 Evil Lincoln,8,5,2
 Fry and Zoidberg,8,8,1
-"Fry, Zoidberg, Amy, Tinny Tim, Bender, Farnsworth",8,4,2
+"Fry, Amy, Zoidberg, Bender, Tinny Tim, and Nibbler",8,3,1
 Gorillas,8,8,1
 Grade 11 Bureaucrat,8,2,1
 Guardbot #2,8,2,2
+H.G. Blob,8,4,2
 Infosquito,8,3,2
 Insect-sized Bender,8,2,2
 Ipji,8,3,1
 John DiMaggio,8,3,2
-Leela',8,4,2
+Killbot 3,8,2,2
 Liubots,8,0,1
+Mad Fellow,8,3,2
 Male CDC scientist,8,3,2
 Nannybot 1.0,8,4,1
-Peaches,8,2,2
+Nixon's Head,8,3,1
+Planet Express Ship Alarm,8,4,1
 Sandy,8,2,2
 Scout Leader,8,3,1
 Statue,8,4,2
 Stilt People,8,8,1
-The Dixie Chicks,8,4,2
-The Funkalistics,8,6,2
-Three Eyed Zebra,8,2,2
+TV Announcer,8,3,1
 Todd,8,4,1
 Underwater House Salesman,8,3,1
 103 00,7,3,1
@@ -1153,21 +1096,23 @@ Underwater House Salesman,8,3,1
 97 00,7,3,1
 Aide #5,7,3,1
 Al Gore's head,7,4,1
-Aliens,7,0,3
+Amy Wong,7,1,1
 "Amy, Leela, Fry, Bender, and Hermes",7,0,1
 Baby,7,6,2
 Brett Blob,7,3,1
 Caddy,7,3,1
 Calculon's Nephew,7,2,1
-Charles de Gualle's Head,7,3,1
+Crazy Guy,7,4,1
 Decapodian Woman #1,7,2,1
 Deep Blue,7,5,3
 Dragon Ghost,7,0,1
+Feminista,7,1,2
 Fifth CDC officer,7,4,1
 Hermberg,7,1,1
 Hippie #2,7,1,2
 Hippie #6,7,2,1
 Holo-Leela,7,4,1
+Hooded Robot,7,5,2
 Hot Dog Stand,7,3,1
 Juror #1,7,2,2
 Lady #2,7,4,1
@@ -1176,25 +1121,30 @@ Leonardo da Vinci,7,3,1
 Martian #2,7,4,1
 Monroe-bot,7,4,1
 Moose,7,2,2
+Mr Wong,7,0,1
 New Fry,7,1,1
 Orowheat,7,1,2
 Parrot,7,6,1
+Phil,7,2,1
 Pig,7,1,2
 Robo-Police,7,3,1
 Robot Carny,7,4,1
 Robot Ghosts,7,4,1
 Ronald Reagan's head,7,1,1
 Royalty girl,7,2,1
+Ruth Bader Ginsburg's head,7,4,1
 Slave #3,7,4,1
 Small rock Alien,7,3,1
+Striped biologist-taunter,7,1,1
 Stripperbot,7,5,1
-Three Leos on the Machine,7,4,2
 Thubanian,7,2,1
+Treedledum,7,2,1
 Who Ask Machine,7,2,1
 Woman #3,7,2,1
 Women,7,5,2
 Worm Guard #1,7,1,2
 Young woman,7,3,1
+'Boobs Vanderbilt,6,2,1
 104 00,6,3,1
 106 00,6,4,1
 118 00,6,2,1
@@ -1241,17 +1191,17 @@ Young woman,7,3,1
 71 00,6,3,1
 86 00,6,3,1
 98 00,6,0,1
-???,6,2,2
 Amazonians,6,6,1
 Andy,6,3,1
 Arthur,6,3,1
 Bender and Ben,6,4,1
+Bender's First Born Son,6,1,1
 Bending Unit,6,1,1
 Benny,6,3,1
 Bernilla,6,5,1
-Clip Board,6,4,2
 Cowboy,6,4,1
 Crow T. Robot,6,2,1
+Danny,6,2,1
 Darth Trocious,6,4,2
 Decapodian Woman #3,6,3,1
 Gerald Ford's head,6,2,1
@@ -1259,21 +1209,29 @@ Hippie #4,6,3,1
 Hitchhiker,6,2,1
 Huge-assed woman,6,2,1
 Ice-V,6,3,1
-Leela's Wrist Thingy,6,2,2
+Judge Dogg,6,3,1
+Kwanzabot,6,5,4
 Lincolnbot,6,3,1
 Liubot #4,6,4,3
 Liubot #5,6,3,3
+MOM COMPUTER,6,2,1
+Mad Hatterbot,6,3,3
 Male voice #1,6,6,2
-Morgan Proctor,6,2,2
+Man walking on screen,6,2,1
+Mr. Kroker,6,2,2
+Mrs. Kroker,6,1,1
 Neptunian Woman,6,3,1
 Penguin #1,6,2,2
 Penguins,6,2,1
 Policeman #2,6,3,1
-Punk,6,4,2
 Rat Woman,6,2,2
 "Scruffy, Leela, Hermes, and Bender",6,2,1
+Security Woman,6,4,1
 Security woman,6,2,1
+Shop Owner,6,3,1
 Sound Effects 5000,6,1,2
+Staff,6,3,6
+Super Hero,6,0,1
 Tenant #1,6,0,3
 The Being of Inconceivable Horror,6,1,1
 Trees,6,3,3
@@ -1282,6 +1240,7 @@ Very small Bender,6,2,1
 Vladimir-Ghost,6,2,1
 Wermstrom,6,2,1
 Wine Bucket,6,6,2
+Worm Announcer,6,3,1
 "Zoidberg, Leela, Amy, Hermes, and several heads",6,4,1
 11 00,5,2,1
 112 00,5,1,1
@@ -1343,19 +1302,24 @@ Wine Bucket,6,6,2
 85 00,5,1,1
 96 00,5,3,1
 99 00,5,4,1
+ALL YIVOS,5,2,1
 Ad,5,2,1
 Amish man,5,5,1
 Amy and the Contrabulous Choosematron,5,3,1
 Bartender-bot,5,3,1
 Bee #2,5,3,1
+Bender Doll,5,4,1
 Bender Figurine,5,4,1
+Boobs Vanderbilt,5,2,1
+Chanukah Zombie,5,3,2
 Congregation,5,2,1
 Crummy Robot,5,1,1
 DJ,5,3,1
-Die of Power,5,2,5
 Dutch Schultz,5,1,1
+Francine,5,4,2
 Fratbot #3,5,2,1
 French Guy,5,3,1
+Frida Waterfall,5,2,1
 Gopher #2,5,1,1
 Italian #2,5,1,1
 Jackie Jr,5,3,2
@@ -1368,22 +1332,27 @@ Microscopic Bender,5,4,1
 Motorist #1,5,3,1
 Mutant #1,5,3,1
 Noticeably F.A.T.,5,3,1
+OTHERS,5,2,1
 Pain Monster,5,3,1
 Photographer #1,5,2,1
 Photographer #2,5,1,1
 Planet Express headquarters,5,2,1
+Pocket Pal,5,4,1
 "Robot Monks, including Bender",5,1,1
 Ruth Bader Ginsburg,5,2,1
+"Santa, Chanukah Zombie and Kwanzabot",5,2,1
 Souter,5,2,1
 Spotty Teen Robot,5,0,1
 Tenant #2,5,1,1
 Tenant #3,5,0,1
-Transition Announcer 2,5,2,1
+Tex Connecticut,5,0,2
 Umpire,5,2,3
 Vergerbot,5,3,2
 Walter Cronkite's head,5,4,1
+Younger Farnsworth,5,2,3
 πkea Robot,5,4,1
-'Chanukah Zombie,4,0,2
+'Momon,4,2,1
+'Rich Little,4,1,1
 110 00,4,2,1
 131 00,4,2,1
 136 00,4,0,1
@@ -1429,9 +1398,8 @@ Walter Cronkite's head,5,4,1
 69 00,4,1,1
 79 00,4,1,1
 94 00,4,1,1
-ALL NOT YIVO,4,0,2
+Aliens,4,0,2
 Alphabot,4,0,2
-Amazonian Woman,4,3,1
 Amy 420,4,2,1
 Amy and Bender,4,3,1
 Andy Warhol,4,2,1
@@ -1445,17 +1413,17 @@ Countess von Luftballon,4,2,1
 Decapodian Man #2,4,0,1
 Einstein Actor,4,3,1
 Friender,4,0,1
+"Fry, Zoidberg, Amy, Tinny Tim, Bender, Farnsworth",4,2,1
 Gophers,4,2,1
 Guard #3,4,0,1
 Guardbot #3,4,1,2
-H. G. Blob,4,2,2
-Heads,4,2,2
 Hippie #3,4,0,1
 Hitler,4,4,1
 Hunter #2,4,2,3
 Italian #1,4,1,2
 Juror #2,4,0,1
 Lamp,4,1,1
+Leela',4,2,1
 Lime Elder,4,1,1
 Lyndon Johnson's head,4,1,1
 Manbot,4,3,1
@@ -1468,10 +1436,10 @@ Neptunian,4,0,1
 Neptunian Man,4,1,1
 Nerd #3,4,0,1
 Nerd #4,4,2,1
-Nibblonians,4,0,2
 Norm,4,1,1
 O'Connor,4,3,1
 Pachinko machine,4,3,1
+Peaches,4,1,1
 Professor Farnsoworth,4,3,1
 Ray,4,0,2
 Ricardo,4,4,1
@@ -1479,6 +1447,10 @@ Slaves,4,3,1
 Small Glurmo #2,4,1,1
 SpongeBot SquareBolts,4,2,1
 Tandy,4,1,1
+The Dixie Chicks,4,2,1
+The Funkalistics,4,3,1
+Three Eyed Zebra,4,1,1
+Three Leos on the Machine,4,2,1
 Worm Guard #2,4,2,1
 """Ensign""",3,2,1
 116 00,3,2,1
@@ -1522,6 +1494,7 @@ Worm Guard #2,4,2,1
 80 00,3,2,1
 88 00,3,0,1
 89 00,3,0,1
+???,3,1,1
 Bender 1729,3,2,1
 Bender duplicate A,3,1,1
 Bidder #1,3,1,1
@@ -1532,6 +1505,7 @@ Bird,3,1,1
 Broker-bot #3,3,2,1
 Ceiling Fan,3,2,1
 Cheech,3,1,1
+Clip Board,3,2,1
 Cyclopian Man #2,3,2,1
 Decapodian Woman #2,3,0,1
 Doll,3,2,1
@@ -1546,14 +1520,17 @@ Fry's Voice,3,2,1
 Gretsky,3,1,1
 Guards,3,3,1
 Hammurabi Actor,3,2,1
+Hattie McDoogal,3,1,1
 Hermes and Zoidberg,3,2,1
 Hippie #5,3,1,1
 Hunter #1,3,0,2
 Journalist #1,3,1,1
 Kidman,3,0,1
 Killbot,3,1,1
+Leela's Wrist Thingy,3,1,1
 Liubot #6,3,0,1
 MCA,3,1,1
+Morgan Proctor,3,1,1
 NIxon,3,1,1
 Nibblonian Chef,3,2,1
 Orphan #2,3,2,1
@@ -1562,13 +1539,13 @@ Orphans and Humplings,3,2,1
 Pathologist #2,3,1,2
 Patrol Officer #1,3,1,1
 Patrol Officer #2,3,1,1
+Punk,3,2,1
 Raiders of the Lost Arcade,3,2,1
 Raoul Inglis,3,2,1
 Robber-bot,3,2,1
 Robot Clown,3,0,1
 Sibling #2,3,0,1
 Smitty and URL,3,0,1
-SportsBot 5000,3,2,1
 Sportsbot 5000,3,2,1
 Steward,3,3,1
 Tattoo #2,3,1,1
@@ -1576,6 +1553,7 @@ Teen #2,3,2,1
 Toy Bender,3,2,1
 Unknown person,3,2,1
 William Taft's head,3,1,1
+'Chanukah Zombie,2,0,1
 'Sweet' Clyde,2,0,1
 111 00,2,2,1
 134 00,2,0,1
@@ -1599,6 +1577,7 @@ William Taft's head,3,1,1
 66 00,2,1,1
 67 00,2,0,1
 78 00,2,2,1
+ALL NOT YIVO,2,0,1
 Aide #7,2,1,1
 Alien #2,2,0,1
 All except Bendee Boo,2,2,1
@@ -1609,27 +1588,27 @@ Bender's Son,2,2,1
 Betamax Player,2,1,1
 Broker-bot #2,2,2,1
 Brown-haired Man,2,0,1
-Bystanders,2,0,2
 Captain Mega Meat,2,1,1
 Conspiracy Nutter,2,2,1
-Constantine,2,2,2
+Convenience Store Bot,2,0,1
 Cool-o-Meter,2,0,1
 Crewman,2,1,1
 Daisy-Mae 128K,2,2,1
 Darth Ithead,2,2,1
 Darth Urderer,2,2,1
 Dial L for Leela,2,2,1
-Fanrsworth,2,2,2
+Die of Power,2,1,2
 Fifth Elder,2,0,1
 Flabby,2,1,1
 Frankie,2,0,1
 Fry 1729,2,1,1
 Guardbot #4,2,1,1
+H. G. Blob,2,1,1
+Heads,2,1,1
 Hydroponic Farmer,2,1,1
 Judge Whitey,2,1,1
 Keg Robot,2,1,1
 Leela 1729,2,1,1
-Leela and Lars,2,0,2
 "Leela, Bender, Hermes, Farnsworth, Amy and Zoidberg",2,2,1
 Little Prince,2,2,1
 Liubot #7,2,2,1
@@ -1639,19 +1618,17 @@ Man #6,2,1,1
 Mermaids,2,2,1
 Merman,2,2,1
 Motorist #2,2,1,1
-Nudar-2,2,2,2
+Nibblonians,2,0,1
 Orphan #1,2,2,1
 Others,2,1,2
 Protestor #1,2,0,1
 Protestor #2,2,1,1
-Remaining Ogre,2,2,2
 Robot #6,2,0,1
 Shrimpkins,2,1,1
 Slave #2,2,0,1
 Stockbroker #2,2,1,1
 Superhero from The Beast with the Billion Backs,2,1,1
 Tattoo #3,2,0,1
-The PE Crew,2,0,2
 Travers' mother,2,0,2
 Vijai Patel,2,0,1
 Woman #5,2,1,1
@@ -1676,26 +1653,33 @@ Big-Mouthed Mutant,1,1,1
 Bill,1,0,1
 Boom Mic-bot,1,0,1
 Bureaucrats,1,1,1
+Bystanders,1,0,1
 Child,1,1,1
+Constantine,1,1,1
 Customer,1,1,1
 Director #1,1,1,1
 Everybody else,1,0,1
+Fanrsworth,1,1,1
 Farnsworth XVII,1,1,1
 "First, Third and Fourth Elders",1,1,1
 Fry and Leela,1,0,1
 George H. W. Bush's head and George W. Bush's head,1,0,1
 Humans,1,0,1
 Jack the Ripper,1,1,1
+Leela and Lars,1,0,1
 "Leela, Bender, Zoidberg, Hermes, Amy, and Fry",1,0,1
 Mrs Astor,1,1,1
 "Munda, Morris, Inez, Leo, Dwight, and LaBarbara",1,1,1
+Nudar-2,1,1,1
 Patron,1,0,1
 Princess Flavia,1,0,1
+Remaining Ogre,1,1,1
 Ruth and Esther,1,0,1
 Senator Ravers,1,0,1
 Stockbroker #1,1,0,1
 Student,1,0,1
 Taco Bellevue Doctor,1,1,1
+The PE Crew,1,0,1
 Third Elder,1,1,1
 Thorias,1,0,1
 Universal Translator,1,1,1
@@ -1703,4 +1687,3 @@ Vampire,1,1,1
 Welshie,1,1,1
 Young Boy,1,0,1
 Younger Boy,1,0,1
-Zap,1,0,1

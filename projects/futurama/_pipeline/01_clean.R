@@ -36,6 +36,9 @@ raw <- read_csv(
 # Episodes -------------------------------------------------------------------
 # Order = order in theinfosphere.org's transcript listing (production order,
 # films last). This is NOT broadcast order; use an air-date table for that.
+# The 140 episodes already include the four films, split into 16 "Part"
+# episodes for broadcast. The full-length film transcripts (type "film") repeat
+# that dialogue, so 02_counts.R leaves them out.
 films <- c(
   "Bender's Big Score", "The Beast with a Billion Backs",
   "Bender's Game", "Into the Wild Green Yonder"
@@ -122,9 +125,20 @@ speaker_aliases <- lines |>
   filter(!is.na(speaker), speaker != speaker_raw) |>
   count(speaker, speaker_raw, name = "lines", sort = TRUE)
 
+# Unusable rows --------------------------------------------------------------
+# Two source pages are mostly one unsplit paragraph: "Naturama" (the whole
+# episode under the label "Futurama presents") and "Saturday Morning Fun Pit"
+# (~1,800 words credited to Zoidberg). A line over 500 words is a block of
+# several speakers, not one line, so it is dropped. "Card" is on-screen text.
+non_dialogue <- c("Card")
+lines <- lines |>
+  mutate(n_words = str_count(coalesce(text, ""), "\\S+"),
+         unsplit_block = n_words > 500)
+
 # Final table ----------------------------------------------------------------
 lines_clean <- lines |>
-  filter(!is.na(speaker), !is.na(text), text != "") |>
+  filter(!is.na(speaker), !is.na(text), text != "",
+         !unsplit_block, !speaker %in% non_dialogue) |>
   left_join(episodes, by = "episode_url") |>
   select(row_id, episode_order, episode, type, has_timestamp, timestamp,
          speaker, speaker_raw, text)
@@ -137,10 +151,12 @@ parse_report <- tribble(
   "  re-split on first colon here",             sum(!lines$has_timestamp & !is.na(lines$speaker)),
   "Dropped: no speaker (actions, song verses)", sum(is.na(lines$speaker)),
   "Dropped: speaker but empty after cleaning",  sum(!is.na(lines$speaker) & (is.na(lines$text) | lines$text == "")),
+  "Dropped: unsplit multi-speaker blocks",      sum(!is.na(lines$speaker) & lines$unsplit_block),
+  "Dropped: on-screen text (Card)",             sum(lines$speaker %in% non_dialogue),
   "Clean spoken lines",                         nrow(lines_clean),
   "Lines with a 2nd colon (kept in full)",      sum(str_detect(lines_clean$text, ":")),
-  "Episodes",                                   sum(episodes$type == "episode"),
-  "Films",                                      sum(episodes$type == "film")
+  "Episodes (incl. 16 film parts)",             sum(episodes$type == "episode"),
+  "Full-length films (duplicates, not counted)", sum(episodes$type == "film")
 )
 
 saveRDS(lines_clean, "data-private/lines_clean.rds")

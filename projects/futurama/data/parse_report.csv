@@ -5,7 +5,9 @@ Rows with text,29182
   re-split on first colon here,27173
 "Dropped: no speaker (actions, song verses)",171
 Dropped: speaker but empty after cleaning,59
-Clean spoken lines,28952
-Lines with a 2nd colon (kept in full),1012
-Episodes,140
-Films,4
+Dropped: unsplit multi-speaker blocks,2
+Dropped: on-screen text (Card),1
+Clean spoken lines,28949
+Lines with a 2nd colon (kept in full),1010
+Episodes (incl. 16 film parts),140
+"Full-length films (duplicates, not counted)",4
