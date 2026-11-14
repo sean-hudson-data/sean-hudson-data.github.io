@@ -91,7 +91,7 @@ ul.task-list li input[type="checkbox"] {
     const options = {
       valueNames: ['listing-image','listing-title','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-categories"],
+      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -142,7 +142,10 @@ window.Quarto = {
 
 <link rel="stylesheet" href="assets/styles.css">
 <meta property="og:title" content="Projects – Sean Hudson">
+<meta property="og:image" content="https://sean-hudson-data.github.io/projects/futurama/ass_users.png">
 <meta property="og:site_name" content="Sean Hudson">
+<meta property="og:image:height" content="456">
+<meta property="og:image:width" content="960">
 </head>
 
 <body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -361,7 +364,7 @@ window.Quarto = {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(0)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(1)</span></div><div class="category" data-category="SnVzdCUyMGZvciUyMGZ1bg==">Just for fun <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Ug==">R <span class="quarto-category-count">(1)</span></div><div class="category" data-category="VGV4dCUyMGFuYWx5c2lz">Text analysis <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -397,7 +400,31 @@ window.Quarto = {
     </div>
 </div>
 <div class="list grid quarto-listing-cols-2">
+<div class="g-col-1" data-index="0" data-categories="UiUyQ1RleHQlMjBhbmFseXNpcyUyQ0p1c3QlMjBmb3IlMjBmdW4=" data-listing-date-sort="1698811200000" data-listing-file-modified-sort="1794684159145" data-listing-date-modified-sort="1794632400000" data-listing-reading-time-sort="10" data-listing-word-count-sort="1945">
+<a href="./projects/futurama/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./projects/futurama/ass_users.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+What Is Bender’s Most-Used Word?
+</h5>
+<div class="listing-categories">
 
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('VGV4dCUyMGFuYWx5c2lz'); return false;">Text analysis</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('SnVzdCUyMGZvciUyMGZ1bg=='); return false;">Just for fun</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>Testing a Futurama plot point against 140 episodes of transcripts: Bender’s top word is his own name, but nobody says ‘ass’ more.</p>
+</div>
+</div>
+</div></a>
+</div>
 </div>
 <div class="listing-no-matching d-none">No matching items</div>
 </div></main> <!-- /main -->

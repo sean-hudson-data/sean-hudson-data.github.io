@@ -1,0 +1,12 @@
+/* Page-level accent for the Futurama piece only */
+:root {
+  --pe-green: #2E9E68; /* Planet Express green, deepened from #70E3A2 so it holds contrast in light and dark mode */
+}
+
+.bottom-line {
+  border-left-color: var(--pe-green);
+}
+
+h2 {
+  color: var(--pe-green);
+}
