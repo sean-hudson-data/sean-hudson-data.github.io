@@ -1,0 +1,26 @@
+---
+title: "Measuring Community Need for Food Rescue"
+description: "How the Community Need Index scores census tracts, shown for one county."
+categories: [R, Python, Geospatial, Food access]
+# image: thumbnail.png    # TODO: county map (uncomment once the file exists)
+order: 3
+draft: true
+---
+
+::: {.bottom-line}
+**Bottom line.** <!-- TODO -->
+:::
+
+<!-- Scope: one geography only (e.g., Allegheny County). Confirm internally first. -->
+
+## The four components
+
+<!-- SNAP participation, Type II diabetes, personal circumstances, localized median income. -->
+
+## From deciles to a 4–40 score
+
+## The food access adjustment (0 / 2 / 4)
+
+## Explore the county
+
+<!-- Single-county PMTiles + MapLibre, served from this folder. -->

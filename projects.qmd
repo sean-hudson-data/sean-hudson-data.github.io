@@ -1,0 +1,14 @@
+---
+title: "Projects"
+toc: false
+listing:
+  contents: projects/*/index.qmd
+  type: grid
+  grid-columns: 2
+  sort: "order"
+  categories: true
+  sort-ui: false
+  filter-ui: true
+  fields: [image, title, description, categories]
+  image-placeholder: assets/placeholder.svg
+---

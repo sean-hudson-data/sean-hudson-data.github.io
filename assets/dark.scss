@@ -1,0 +1,22 @@
+/*-- scss:defaults --*/
+// Dark variant layered on top of cosmo
+$body-bg: #15181c;
+$body-color: #e3e6ea;
+$link-color: #6ea8fe;
+$navbar-bg: #0f1215;
+$navbar-fg: #e3e6ea;
+$footer-bg: #0f1215;
+$code-bg: #1f2329;
+$code-color: #f0a8c0;
+$border-color: #2c3138;
+$card-bg: #1c2025;
+$light: #1c2025;
+$nav-tabs-border-color: $border-color;
+$nav-tabs-link-active-bg: $body-bg;
+$nav-tabs-link-active-color: $body-color;
+$nav-tabs-link-active-border-color: $border-color $border-color $body-bg;
+
+/*-- scss:rules --*/
+.card {
+  border-color: $border-color;
+}

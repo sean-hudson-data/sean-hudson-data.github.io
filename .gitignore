@@ -1,0 +1,39 @@
+# Quarto build output (published to gh-pages, never committed to main)
+/.quarto/
+/_site/
+**/*.quarto_ipynb
+
+# _freeze/ IS committed: it lets CI render without R, Python, or data.
+
+# Raw and private data: never commit
+data-raw/
+**/raw/
+**/transcripts/
+**/scrape/
+**/scraping/
+*.rds
+*.rda
+*.RData
+*.parquet
+*.pkl
+*.sqlite
+*.duckdb
+
+# Environments
+.Rproj.user/
+.Rhistory
+.RData
+.venv/
+venv/
+__pycache__/
+renv/library/
+renv/staging/
+.ipynb_checkpoints/
+
+# Secrets
+.env
+.Renviron
+
+# OS
+.DS_Store
+Thumbs.db

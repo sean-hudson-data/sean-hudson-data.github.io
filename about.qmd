@@ -1,0 +1,16 @@
+---
+title: "About"
+toc: false
+---
+
+<!-- TODO: write your own bio. Suggested beats below. -->
+
+**Now.** Director of Data & Analytics at 412 Food Rescue, which runs the Food Rescue Hero platform used by food rescue organizations across North America. As the organization's dedicated data lead, I cover BI, data engineering, geospatial analysis, statistical modeling, and ML.
+
+**Before.** <!-- prior roles -->
+
+**Education.** University of Pittsburgh, School of Public and International Affairs. <!-- TODO: degree and year -->
+
+**Tools.** R (tidyverse, fixest, sf), Python (pandas, geopandas, pyfixest), SQL/Postgres, Observable JS, MapLibre.
+
+**Elsewhere.** Treasurer, National Food Recovery Association executive board.

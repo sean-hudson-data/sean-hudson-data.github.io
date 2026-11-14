@@ -1,0 +1,66 @@
+---
+# Copy to projects/<slug>/index.qmd. Folders starting with "_" are never rendered.
+title: "Project title"
+description: "One sentence for the listing card: the finding, not the method."
+date: 2026-11-14
+categories: [R, Python]
+image: thumbnail.png
+order: 99
+draft: true            # visible in `quarto preview`, excluded from `quarto render`/publish
+# A page with both R and Python chunks runs on knitr + reticulate:
+# engine: knitr
+---
+
+::: {.bottom-line}
+**Bottom line.** State the answer in one or two sentences.
+:::
+
+## Side-by-side R and Python
+
+::: {.panel-tabset group="language"}
+
+## R
+
+```{r}
+#| label: fit-r
+library(fixest)
+fit <- feols(mpg ~ wt | cyl, data = mtcars, cluster = ~cyl)
+etable(fit)
+```
+
+## Python
+
+```{python}
+#| label: fit-py
+import pyfixest as pf
+from pyfixest.utils import get_data
+
+fit = pf.feols("Y ~ X1 | f1", data=get_data(), vcov={"CRV1": "f1"})
+fit.summary()
+```
+
+:::
+
+`group="language"` keeps every R/Python tabset on the page in sync when the reader switches.
+
+## Interactive: hand data to Observable
+
+Pass a small, aggregated data frame from R or Python to OJS:
+
+```{r}
+#| label: to-ojs
+#| echo: false
+summary_tbl <- aggregate(mpg ~ cyl, data = mtcars, FUN = mean)
+ojs_define(summary_tbl = summary_tbl)
+```
+
+```{ojs}
+//| echo: false
+viewof cyl = Inputs.radio([4, 6, 8], {label: "Cylinders", value: 4})
+row = transpose(summary_tbl).find(d => d.cyl === cyl)
+md`Average MPG: **${row.mpg.toFixed(1)}**`
+```
+
+For larger data, write an aggregated CSV next to the page, list it in
+`scripts/published-data.txt`, and read it with
+`FileAttachment("data/summary.csv").csv({typed: true})`.

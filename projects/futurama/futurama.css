@@ -1,0 +1,12 @@
+/* Page-level accent for the Futurama piece only */
+:root {
+  --pe-green: #5aa832; /* Planet Express green: swap in the exact hex from the original article */
+}
+
+.bottom-line {
+  border-left-color: var(--pe-green);
+}
+
+h2 {
+  color: var(--pe-green);
+}

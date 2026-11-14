@@ -1,0 +1,48 @@
+---
+title: "Revisiting Medicaid Managed Care for IDD/ASD Services"
+description: "A 2019 difference-in-differences analysis, re-estimated with modern staggered-adoption methods: a first-year spending dip, then no measurable lasting change."
+date: 2019-01-01        # TODO: original memo date; add date-modified when refreshed
+categories: [R, Python, Causal inference, Health policy]
+# image: thumbnail.png    # TODO: event-study plot (uncomment once the file exists)
+order: 1
+draft: true
+---
+
+::: {.bottom-line}
+**Bottom line.** <!-- TODO: one-sentence finding after the refresh -->
+:::
+
+<!-- Page plan (from handoff): one analysis, three tabs. -->
+
+::: {.panel-tabset}
+
+## For providers
+
+<!-- Expect a first-year cash-flow gap. Exposure calculator (Observable input). -->
+
+## For policymakers
+
+<!-- No savings large enough to show in state Medicaid spending. -->
+
+## How this was estimated
+
+### The 2019 analysis
+
+<!-- 51 units x 1991-2014 (1,224 state-years); five adopters (AZ, KS, MI, NC, WI);
+     TWFE -$433 (p < 0.1), robust but unclustered SEs; event study year 0 ~ -$1,100. -->
+
+### What modern methods change
+
+<!-- Clustered SEs + randomization inference; Callaway-Sant'Anna and Sun-Abraham
+     next to TWFE; years 0+1 combined; 5+ interval as a bound on long-run savings.
+     R / Python panel-tabset for the fixest vs pyfixest replication. -->
+
+### Limitations
+
+<!-- Spending isn't available by program, so IDD effects are diluted in total spending. -->
+
+### Related research
+
+<!-- Yamaki et al. (2018); Gibbons, Owen, and Heller (2016). -->
+
+:::

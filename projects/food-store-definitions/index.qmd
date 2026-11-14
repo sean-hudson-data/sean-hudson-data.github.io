@@ -1,0 +1,25 @@
+---
+title: "Which Stores Count? Food Desert Status Depends on the Definition"
+description: "Toggle food store definitions and watch census tracts flip in and out of low-access status."
+categories: [Python, Geospatial, Sensitivity analysis, Food access]
+# image: thumbnail.png    # TODO (uncomment once the file exists)
+order: 4
+draft: true
+---
+
+::: {.bottom-line}
+**Bottom line.** <!-- TODO -->
+:::
+
+## Why the definition matters
+
+## The definitions compared
+
+<!-- Precompute each definition from OS-FARA's stored block distances (Python).
+     Publish one small tract-level table: tract x definition -> low-access flag. -->
+
+## Try it yourself
+
+<!-- Observable Inputs.radio over definitions; map or table of tracts that flip. -->
+
+## How this pairs with CNI

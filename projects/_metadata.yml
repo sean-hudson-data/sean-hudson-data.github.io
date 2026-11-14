@@ -1,0 +1,9 @@
+# Defaults for every page under projects/
+format:
+  html:
+    code-fold: true
+    code-summary: "Show code"
+    code-tools: true
+    code-copy: true
+    toc-depth: 2
+title-block-banner: false

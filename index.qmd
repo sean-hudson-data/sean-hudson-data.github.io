@@ -1,0 +1,25 @@
+---
+title: "Sean Hudson"
+subtitle: "Director of Data & Analytics, 412 Food Rescue"
+toc: false
+listing:
+  id: featured
+  contents: projects/*/index.qmd
+  type: grid
+  grid-columns: 2
+  sort: "order"
+  max-items: 4
+  fields: [image, title, description, categories]
+  image-placeholder: assets/placeholder.svg
+---
+
+I build data systems and analyses for food rescue: measuring community need, mapping food access, and helping a national network of partners understand their impact. I work mostly in R, increasingly in Python, and like analyses that end in a decision someone can act on.
+
+<!-- TODO: tighten this intro; one or two sentences on what you want a reader to take away -->
+
+## Featured work
+
+::: {#featured}
+:::
+
+[All projects →](projects.qmd)

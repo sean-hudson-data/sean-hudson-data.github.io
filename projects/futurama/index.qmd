@@ -1,0 +1,41 @@
+---
+title: "What Is Bender's Most-Used Word?"
+description: "Testing a Futurama plot point against the transcripts: Bender's top word is his own name, but nobody says 'ass' more."
+date: 2023-11-01        # originally published on LinkedIn; add date-modified on refresh
+categories: [R, Python, Text analysis, Just for fun]
+# image: ass_users.png    # keep this filename (uncomment once the file exists)
+css: futurama.css
+order: 2
+draft: true
+---
+
+::: {.bottom-line}
+**Bottom line.** <!-- TODO: premise and answer up front -->
+:::
+
+## His top word is his own name
+
+## Who says "ass" most?
+
+<!-- ![](ass_users.png) -->
+
+## Per-word rate by character
+
+<!-- Normalize by total words spoken. -->
+
+## The episode's top ten vs. the real counts
+
+<!-- Left join from the claimed list so zero-count words show up. -->
+
+::: {.callout-note collapse="true"}
+## Was it true when the episode aired?
+
+<!-- Cumulative counts in airing order, stopping before "War Is the H-Word". -->
+:::
+
+## Methods and limitations
+
+<!-- 137 of 140 original episodes; stop words; stemming; missing lines; tie ranking. -->
+
+<!-- DATA RULES: only aggregated counts live in data/. No scraping code, no
+     transcripts, no line-level or token-order data. See README. -->

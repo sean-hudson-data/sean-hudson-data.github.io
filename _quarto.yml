@@ -1,0 +1,52 @@
+project:
+  type: website
+  output-dir: _site
+  # Add a CNAME file and list it here once you have a custom domain
+  resources:
+    - assets/placeholder.svg
+  # Fails the render if raw or unapproved data files land in _site/
+  post-render:
+    - scripts/check_site.py
+
+website:
+  title: "Sean Hudson"
+  description: "Data science, policy analysis, and food access research"
+  site-url: https://sean-hudson-data.github.io   # change if you add a custom domain
+  repo-url: https://github.com/sean-hudson-data/sean-hudson-data.github.io
+  open-graph: true
+  page-navigation: true
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: projects.qmd
+        text: Projects
+      - href: about.qmd
+        text: About
+    right:
+      - icon: github
+        href: https://github.com/sean-hudson-data
+        aria-label: GitHub
+      - icon: linkedin
+        href: https://www.linkedin.com/in/USERNAME   # TODO
+        aria-label: LinkedIn
+  page-footer:
+    left: "© 2026 Sean Hudson"
+    right: "Built with [Quarto](https://quarto.org)"
+
+format:
+  html:
+    theme:
+      light: cosmo
+      dark: [cosmo, assets/dark.scss]
+    css: assets/styles.css
+    toc: true
+    smooth-scroll: true
+    link-external-newwindow: true
+
+execute:
+  # Pages re-run only when their source changes; commit _freeze/ so CI never
+  # needs data, R, or Python
+  freeze: auto
+  warning: false
+  message: false

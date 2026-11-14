@@ -1,0 +1,21 @@
+# Data files allowed in the published site, as glob patterns relative to _site/.
+# Only aggregated tables belong here. Never transcripts, line-level, or token-order data.
+# List files explicitly rather than with folder-wide globs, so a stray file still fails.
+
+# Futurama (built by projects/futurama/_pipeline/02_counts.R)
+projects/futurama/data/ass_by_character.csv
+projects/futurama/data/bender_top_stems.csv
+projects/futurama/data/bender_top_words.csv
+projects/futurama/data/bender_word_by_episode.csv
+projects/futurama/data/character_totals.csv
+projects/futurama/data/character_word_counts.csv
+projects/futurama/data/claimed_vs_actual.csv
+projects/futurama/data/episodes.csv
+projects/futurama/data/fillers_removed.csv
+projects/futurama/data/parse_report.csv
+projects/futurama/data/sensitivity_fillers.csv
+projects/futurama/data/speaker_aliases.csv
+
+# Examples for later projects:
+# projects/food-store-definitions/data/tract_flags.csv
+# projects/cni-sample/data/allegheny.pmtiles
