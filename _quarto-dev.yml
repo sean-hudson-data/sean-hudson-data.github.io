@@ -1,0 +1,5 @@
+# Local writing profile: `quarto preview --profile dev`
+# Shows draft pages in full (and in listings) while you write.
+# `quarto publish` and `quarto render` without --profile still hide drafts.
+website:
+  draft-mode: visible

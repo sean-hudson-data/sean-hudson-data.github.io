@@ -1,0 +1,22 @@
+variant,key,label,people
+1And10,supermarket,Supermarkets and super stores,0
+1And10,grocery,Grocery stores,0
+1And10,dollar,Dollar stores,262328
+1And10,pharmacy,Chain pharmacies,117344
+1And10,convenience,Convenience stores,1078286
+1And10,specialty,Specialty stores,23473
+1And10,other,Other SNAP retailers,28189
+halfAnd10,supermarket,Supermarkets and super stores,0
+halfAnd10,grocery,Grocery stores,0
+halfAnd10,dollar,Dollar stores,338717
+halfAnd10,pharmacy,Chain pharmacies,182289
+halfAnd10,convenience,Convenience stores,1550057
+halfAnd10,specialty,Specialty stores,37720
+halfAnd10,other,Other SNAP retailers,45835
+1And20,supermarket,Supermarkets and super stores,0
+1And20,grocery,Grocery stores,0
+1And20,dollar,Dollar stores,249809
+1And20,pharmacy,Chain pharmacies,117344
+1And20,convenience,Convenience stores,1058708
+1And20,specialty,Specialty stores,23272
+1And20,other,Other SNAP retailers,28189

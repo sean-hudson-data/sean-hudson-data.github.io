@@ -1,25 +1,824 @@
 ---
 title: "Which Stores Count? Food Desert Status Depends on the Definition"
-description: "Toggle food store definitions and watch census tracts flip in and out of low-access status."
+description: "TODO: one sentence for the listing card, stating the finding."
+date: 2026-11-15
 categories: [Python, Geospatial, Sensitivity analysis, Food access]
-# image: thumbnail.png    # TODO (uncomment once the file exists)
+# image: thumbnail.png    # TODO: a screenshot of the map works well
 order: 4
 draft: true
+engine: knitr
+fig-cap-location: top
 ---
 
+<!--
+Writing guide (delete before publishing)
+- Same two-depth approach as the MCO page: headings, takeaway sentences, and
+  figures carry the story; callouts hold the method.
+- Numbers come from Python (py_* values in the setup chunk), shown inline as
+  r py$... so they always match data/. Rebuild data/ with _analysis/01-04.
+-->
+
+```{r}
+#| label: python-env
+#| include: false
+# Run the Python chunks in the Python OS-FARA uses: an "osfara" conda env if
+# there is one, otherwise Anaconda's base Python. library() also makes `py$...`
+# available for inline numbers.
+library(reticulate)
+anaconda_py <- file.path(Sys.getenv("USERPROFILE"), "anaconda3", "python.exe")
+if (condaenv_exists("osfara")) {
+  use_condaenv("osfara", required = TRUE)
+} else if (file.exists(anaconda_py)) {
+  use_python(anaconda_py, required = TRUE)
+}
+```
+
+```{python}
+#| label: setup
+#| include: false
+import pandas as pd
+
+summary = pd.read_csv("data/ladder_summary.csv")
+illus_blocks = pd.read_csv("data/illustration_blocks.csv", dtype={"tract_geoid": str})
+illus_stores = pd.read_csv("data/illustration_stores.csv")
+flags_v = pd.read_csv("data/validation_flags.csv")
+shares_v = pd.read_csv("data/validation_shares.csv").set_index("distance_mi")
+tract_v = pd.read_csv("data/validation_tracts.csv", dtype={"tract_geoid": str})
+bounds = pd.read_csv("data/approximation_bounds.csv").set_index("step")
+
+main = summary.loc[summary["variant"] == "1And10"].set_index("step")
+
+def fmt(x):
+    return f"{int(x):,}"
+
+la = main["tracts_low_access"]
+lila = main["tracts_lila"]
+pop_la = main["pop_in_low_access_tracts"]
+
+# Headline numbers (1-and-10-mile thresholds)
+la_large, la_all = fmt(la[1]), fmt(la[5])
+lila_large, lila_all = fmt(lila[1]), fmt(lila[5])
+pop_large, pop_all = fmt(pop_la[1]), fmt(pop_la[5])
+la_ratio = f"{la[1] / la[5]:.1f}"
+lila_ratio = f"{lila[1] / lila[5]:.0f}"
+
+# Tracts removed at each step, and each step's share of the total drop
+la_drop = (-la.diff()).fillna(0)
+lila_drop = (-lila.diff()).fillna(0)
+dollar_la, dollar_lila = fmt(la_drop[2]), fmt(lila_drop[2])
+dollar_la_share = f"{la_drop[2] / (la[1] - la[5]):.0%}"
+dollar_lila_share = f"{lila_drop[2] / (lila[1] - lila[5]):.0%}"
+conv_la = fmt(la_drop[4])
+
+retail_pa = main["retailers_pa"]
+retail_large, retail_all = fmt(retail_pa[1]), fmt(retail_pa[5])
+
+# Validation against USDA's SRAM (step 5 = same store universe as SRAM)
+v = flags_v.query("step == 5 and variant == '1And10'").set_index("measure")
+kappa_la = f"{v.loc['Low access', 'kappa']:.2f}"
+agree_la = f"{v.loc['Low access', 'agreement']:.1%}"
+kappa_lila = f"{v.loc['Low income, low access', 'kappa']:.2f}"
+s1 = shares_v.loc[1.0]
+pop1_ours, pop1_sram = fmt(s1["pop_beyond_ours"]), fmt(s1["pop_beyond_sram"])
+pop1_ratio = f"{s1['pop_ratio']:.0%}"
+r1 = f"{s1['share_r']:.2f}"
+within5_1 = f"{s1['within_5pp']:.0%}"
+s10 = shares_v.loc[10.0]
+pop10_ours, pop10_sram = fmt(s10["pop_beyond_ours"]), fmt(s10["pop_beyond_sram"])
+
+# How many people the definition moves (large grocery -> every SNAP retailer)
+combo_sum = pd.read_csv("data/combo_summary.csv")
+impact_who = pd.read_csv("data/impact_who.csv")
+impact_near = pd.read_csv("data/impact_nearest.csv")
+beyond_large, beyond_all = main.loc[1, "pop_beyond_threshold"], main.loc[5, "pop_beyond_threshold"]
+moved_people = fmt(beyond_large - beyond_all)
+moved_share = f"{(beyond_large - beyond_all) / beyond_large:.0%}"
+la_pop_drop = fmt(main.loc[1, "pop_in_low_access_tracts"] - main.loc[5, "pop_in_low_access_tracts"])
+lila_pop_drop = fmt(main.loc[1, "pop_in_lila_tracts"] - main.loc[5, "pop_in_lila_tracts"])
+near = impact_near.query("variant == '1And10' and people > 0").set_index("key")
+near_conv = fmt(near.loc["convenience", "people"])
+near_conv_share = f"{near.loc['convenience', 'people'] / near['people'].sum():.0%}"
+near_dollar = fmt(near.loc["dollar", "people"])
+who = impact_who.query("variant == '1And10'").set_index("group")
+lose_snap_hh = fmt(who.loc["Lose low-income, low-access status", "Households receiving SNAP"])
+lose_nov_hh = fmt(who.loc["Lose low-income, low-access status", "Households without a vehicle"])
+
+# Illustration tract
+METRES_PER_MILE = 1609.344
+illus_tract = illus_blocks.loc[illus_blocks["in_tract"] == 1]
+illus_tract_id = illus_tract["tract_geoid"].iloc[0]
+illus_pop = fmt(illus_tract["pop"].sum())
+illus_blocks_n = fmt(len(illus_tract))
+illus_mi_large = f"{(illus_tract['dist_large_m'] * illus_tract['pop']).sum() / illus_tract['pop'].sum() / METRES_PER_MILE:.1f}"
+illus_mi_all = f"{(illus_tract['dist_all_m'] * illus_tract['pop']).sum() / illus_tract['pop'].sum() / METRES_PER_MILE:.1f}"
+
+# Block internal-point approximation
+amb1 = f"{bounds.loc[1, 'share_pop_ambiguous']:.0%}"
+amb5 = f"{bounds.loc[5, 'share_pop_ambiguous']:.0%}"
+b1 = f"{bounds.loc[1, 'tracts_la_min']:,}–{bounds.loc[1, 'tracts_la_max']:,}"
+b5 = f"{bounds.loc[5, 'tracts_la_min']:,}–{bounds.loc[5, 'tracts_la_max']:,}"
+moved_min = fmt(bounds.loc[1, "pop_beyond_min"] - bounds.loc[5, "pop_beyond_max"])
+pb1 = f"{bounds.loc[1, 'pop_beyond_min'] / 1e6:.1f}–{bounds.loc[1, 'pop_beyond_max'] / 1e6:.1f} million"
+pb5 = f"{bounds.loc[5, 'pop_beyond_min'] / 1e6:.1f}–{bounds.loc[5, 'pop_beyond_max'] / 1e6:.1f} million"
+```
+
 ::: {.bottom-line}
-**Bottom line.** <!-- TODO -->
+**Bottom line.** <!-- TODO: two sentences for a policy reader. Counting only large
+grocery retailers, `r py$la_large` Pennsylvania tracts are low access; counting every
+SNAP retailer, `r py$la_all`. Dollar stores alone account for `r py$dollar_la_share`
+of that drop, and `r py$dollar_lila_share` of the drop in low-income, low-access
+tracts. Same people, same roads: only the definition changed. -->
 :::
+
+<!-- TODO: one short intro paragraph. Whether a place counts as a "food desert"
+depends on how far people live from a store, and on which stores count. This page
+measures the first carefully, then varies the second. -->
+
+## How the measure works
+
+<!-- DRAFT (Sean): factual description of the method; edit into your voice. -->
+
+The measure asks one question of every person in Pennsylvania: how far is the
+nearest store that counts? It answers it census block by census block, then
+rolls the answers up to census tracts, the unit USDA designates.
+
+```{python}
+#| label: method-figure
+#| fig-cap: "Each dot is a census block's internal point, sized by population. Lines connect each block in the outlined tract to its nearest store."
+#| fig-alt: "Two maps of the same neighborhood east of Pittsburgh. With only large grocery stores counted, lines from every block in the outlined tract run more than a mile to three stores outside it, and its dots are orange. With every SNAP retailer counted, the lines are short, run to stores inside the tract, and the dots are blue."
+#| renderings: [light, dark]
+import inspect
+import json
+import warnings
+
+import matplotlib.pyplot as plt
+import numpy as np
+from matplotlib.lines import Line2D
+
+# Street basemap: OpenStreetMap's standard tiles (no API key), fetched once when
+# the page renders and toned to grey so the data stays in front. Needs
+# contextily; without it, or offline, the figure renders without a basemap.
+try:
+    import contextily as cx
+except ImportError:
+    cx = None
+    warnings.warn("contextily not installed: method figure renders without a basemap")
+TILES = "https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+# OpenStreetMap blocks tile requests that don't identify the app making them
+# ("Access blocked" tiles), so name this site instead of contextily's random ID.
+TILE_HEADERS = {"User-Agent": "sean-hudson-portfolio/1.0 (+https://sean-hudson-data.github.io)",
+                "Referer": "https://sean-hudson-data.github.io/"}
+if cx is not None:
+    cx.tile.USER_AGENT = TILE_HEADERS["User-Agent"]
+
+
+def tone(img, mode):
+    """Greyscale the tiles: pale for light mode, inverted and dim for dark."""
+    rgb = img[..., :3].astype(float)
+    grey = rgb @ np.array([0.299, 0.587, 0.114])
+    grey = 255 - (255 - grey) * 0.45 if mode == "light" else 18 + (255 - grey) * 0.3
+    out = img.copy()
+    out[..., :3] = np.clip(grey, 0, 255).astype(np.uint8)[..., None]
+    return out
+
+with open("data/pa_tracts.geojson") as f:
+    tract_geom = next(feat["geometry"] for feat in json.load(f)["features"]
+                      if feat["properties"]["tract_geoid"] == illus_tract_id)
+outline = (tract_geom["coordinates"] if tract_geom["type"] == "MultiPolygon"
+           else [tract_geom["coordinates"]])
+lat0 = illus_blocks["lat"].mean()
+panels = [("large", "Large grocery retailers only", illus_stores["large"]),
+          ("all", "Every SNAP retailer", illus_stores["large"] | True)]
+
+
+def add_tiles(ax, mode, ink):
+    """Draw map tiles under everything; leave the axes untouched if that fails.
+
+    Tiles cover a padded window, because matplotlib widens one axis at draw time
+    to keep the map's aspect ratio."""
+    (w, e), (south, n) = ax.get_xlim(), ax.get_ylim()
+    pad_x, pad_y = (e - w) * 0.4, (n - south) * 0.4
+    try:
+        extra = ({"headers": TILE_HEADERS}
+                 if "headers" in inspect.signature(cx.bounds2img).parameters else {})
+        img, ext = cx.bounds2img(w - pad_x, south - pad_y, e + pad_x, n + pad_y, zoom=14,
+                                 source=TILES, ll=True, **extra)
+        img, ext = cx.warp_tiles(tone(img, mode), ext, t_crs="EPSG:4326")
+    except Exception as err:  # offline, or the tile server refused
+        warnings.warn(f"basemap skipped: {err}")
+        return
+    ax.imshow(img, extent=ext, zorder=0, interpolation="bilinear")
+    ax.set_xlim(w, e)
+    ax.set_ylim(south, n)
+    ax.text(0.995, 0.005, "© OpenStreetMap contributors", transform=ax.transAxes,
+            ha="right", va="bottom", fontsize=6, color=ink, alpha=0.8, zorder=5)
+
+
+def share_label(share):
+    pct = "over 99%" if 0.99 < share < 1 else f"{share:.0%}"
+    return f"{pct} of the outlined tract's residents live more than a mile away"
+
+
+def method_chart(mode):
+    ink = "#343a40" if mode == "light" else "#e3e6ea"
+    near = "#2a78d6" if mode == "light" else "#3987e5"
+    far = "#eb6834" if mode == "light" else "#d95926"
+    line = "#9aa0a6" if mode == "light" else "#6b7280"
+    edge = "white" if mode == "light" else "#212529"
+
+    fig, axes = plt.subplots(1, 2, figsize=(10, 5.6), layout="constrained")
+    fig.patch.set_alpha(0)
+    for ax, (key, title, counts) in zip(axes, panels):
+        ax.set_facecolor("none")
+        ax.set_aspect(1 / np.cos(np.deg2rad(lat0)), adjustable="datalim")
+        for _, r in illus_tract.iterrows():
+            ax.plot([r["lon"], r[f"store_lon_{key}"]], [r["lat"], r[f"store_lat_{key}"]],
+                    color=line, lw=0.6, alpha=0.7, zorder=1)
+        beyond = illus_blocks[f"dist_{key}_m"] > METRES_PER_MILE
+        ax.scatter(illus_blocks["lon"], illus_blocks["lat"],
+                   s=np.sqrt(illus_blocks["pop"]) * 2.2, c=np.where(beyond, far, near),
+                   alpha=0.8, linewidths=0, zorder=2)
+        for poly in outline:
+            x, y = zip(*poly[0])
+            ax.plot(x, y, color=ink, lw=1.4, zorder=3)
+        s = illus_stores.loc[counts]
+        ax.scatter(s["lon"], s["lat"], marker="s", s=34, color=ink, edgecolors=edge,
+                   linewidths=0.8, zorder=4)
+        share = (illus_tract.loc[illus_tract[f"dist_{key}_m"] > METRES_PER_MILE, "pop"].sum()
+                 / illus_tract["pop"].sum())
+        ax.set_title(f"{title}\n{share_label(share)}", loc="left", color=ink, fontsize=10.5)
+        ax.set_xlim(illus_blocks["lon"].min(), illus_blocks["lon"].max())
+        ax.set_ylim(illus_blocks["lat"].min(), illus_blocks["lat"].max())
+        ax.set_xticks([])
+        ax.set_yticks([])
+        for spine in ax.spines.values():
+            spine.set_visible(False)
+        # 1-mile scale bar
+        dlon = METRES_PER_MILE / (111_320 * np.cos(np.deg2rad(lat0)))
+        x0, y0 = illus_blocks["lon"].min() + 0.002, illus_blocks["lat"].min() + 0.002
+        ax.plot([x0, x0 + dlon], [y0, y0], color=ink, lw=2, zorder=5)
+        ax.text(x0 + dlon / 2, y0 + 0.0015, "1 mile", ha="center", color=ink, fontsize=9,
+                zorder=5)
+        if cx is not None:
+            add_tiles(ax, mode, ink)
+    handles = [
+        Line2D([], [], marker="o", ls="", color=near, label="Block within 1 mile"),
+        Line2D([], [], marker="o", ls="", color=far, label="Block more than 1 mile away"),
+        Line2D([], [], marker="s", ls="", color=ink, label="Store that counts"),
+        Line2D([], [], color=line, label="Line to nearest store"),
+    ]
+    fig.legend(handles=handles, loc="outside lower center", ncol=4, frameon=False,
+               labelcolor=ink, fontsize=9)
+    plt.show()
+
+
+method_chart("light")
+method_chart("dark")
+```
+
+<!-- TODO: one or two sentences on the figure. The outlined tract (Allegheny County,
+tract `r py$illus_tract_id`, `r py$illus_pop` residents in `r py$illus_blocks_n`
+blocks) is on average `r py$illus_mi_large` miles from a large grocery store and
+`r py$illus_mi_all` miles from any SNAP retailer. Name the place if you like. -->
+
+Step by step:
+
+1. **Start with people, where they live.** The 2020 Census counts population
+   for every census block, the smallest unit it publishes (336,985 blocks in
+   Pennsylvania, many no bigger than a city block). Each block is represented by
+   its internal point, a location the Census Bureau places inside the block.
+2. **Find the nearest store.** For each block, the straight-line distance to the
+   nearest store that counts, measured along the Earth's surface. The search
+   covers every store in the country, so a block near a state line can find a
+   store across it.
+3. **Pick the threshold.** USDA uses different distances for urban and rural
+   tracts: 1 mile in urban tracts and 10 miles in rural ones (with ½-mile and
+   20-mile variants). The urban flag is USDA's own, so the threshold for every
+   tract matches theirs.
+4. **Count the people beyond it.** Everyone in a block whose internal point is
+   farther than the threshold counts as beyond it. Summing those blocks gives
+   the number of people beyond the threshold in each tract, and dividing by
+   the tract's population gives the share.
+5. **Apply USDA's rule.** A tract is *low access* if at least 500 people, or at
+   least a third of its residents, are beyond the threshold. It is *low income,
+   low access* (the usual "food desert") if it is also one of USDA's
+   low-income tracts.
+
+::: {.callout-note collapse="true"}
+## Two numbers that both get called "people in food deserts"
+
+- **People beyond the threshold**: only the people who live farther than the
+  threshold from a store. This is the number in step 4.
+- **People in low-access tracts**: everyone living in a tract that meets the
+  rule, including neighbors who live next to a store. Headlines like "X million
+  Americans live in food deserts" use this one, because the designation belongs
+  to the tract.
+
+The second is always larger. This page says which one it means each time.
+:::
+
+## How USDA measures it
+
+<!-- DRAFT (Sean): check against the ERS documentation linked below. -->
+
+USDA's Food Access Research Atlas now comes in two versions, and both answer the
+same question with a different picture of where people live.
+
+- **The Large Retailer Access Map (LRAM)** is the original atlas. It spreads 2010
+  Census population evenly across half-kilometer grid squares and measures from
+  each square to the nearest supermarket, supercenter, or large grocery store,
+  using a 2019 store list and 2010 tract boundaries.
+- **The SNAP-authorized Retailer Access Map (SRAM)**, released in July 2026, draws
+  a circle of each threshold distance around every SNAP-authorized store (as of
+  June 2025) and counts the people outside every circle, using LandScan USA's
+  roughly 90-meter population grid and 2020 tracts.
+
+Both then apply the same low-access rule as step 5. A circle of a mile around
+every store and the distance to the nearest store are two views of the same
+thing: someone is outside every circle exactly when their nearest store is more
+than a mile away. So the three approaches differ mainly in where they put people
+and which stores they count.
+
+| | This page | USDA LRAM (original atlas) | USDA SRAM |
+|---|---|---|---|
+| Where people are | 2020 census block internal points | 2010 Census, spread over 0.5 km grid squares | LandScan USA, ~90 m grid |
+| Stores | SNAP Retailer Locator, August 2026; any combination of types | Large grocery retailers, 2019 list | All SNAP retailers except farmers markets, June 2025 |
+| Distance | Straight line to the nearest store | From each grid square to the nearest store | Circles around each store; straight-line and driving versions |
+| Tracts | 2020 | 2010 | 2020 |
+| Can change which stores count? | Yes | No | No |
+
+Holding everything but the store list fixed is the point: it lets the ladder
+and map below isolate the definition, and "Does it reproduce USDA's numbers?"
+checks the method against SRAM.
 
 ## Why the definition matters
 
-## The definitions compared
+<!-- TODO (short now that the method comes first):
+- What a "food desert" designation is used for (grant eligibility, siting,
+  research, 412 Food Rescue's own Community Need Index).
+- LRAM counts only large grocery retailers; SRAM counts every SNAP retailer,
+  including dollar stores and chain pharmacies. Which is right is a judgment
+  about what counts as food access, and the answer moves the map. -->
 
-<!-- Precompute each definition from OS-FARA's stored block distances (Python).
-     Publish one small tract-level table: tract x definition -> low-access flag. -->
+## Adding stores one type at a time
 
-## Try it yourself
+<!-- TODO takeaway: one plain sentence, then the chart.
+Numbers: `r py$retail_large` large grocery retailers in PA vs `r py$retail_all` SNAP
+retailers. Low-access tracts fall from `r py$la_large` to `r py$la_all`
+(`r py$la_ratio`x); LILA tracts from `r py$lila_large` to `r py$lila_all`
+(`r py$lila_ratio`x). Dollar stores remove `r py$dollar_la` low-access tracts and
+`r py$dollar_lila` LILA tracts; convenience stores remove `r py$conv_la`. -->
 
-<!-- Observable Inputs.radio over definitions; map or table of tracts that flip. -->
+```{python}
+#| label: ladder-chart
+#| fig-cap: "Pennsylvania census tracts flagged under each definition (1 mile urban, 10 miles rural)"
+#| fig-alt: "Two horizontal bar charts. Low-access tracts fall from 1,018 under large grocery retailers to 486 under all SNAP retailers, with the biggest drops at dollar stores and convenience stores. Low-income, low-access tracts fall from 220 to 36, mostly at the dollar store step."
+#| renderings: [light, dark]
+import matplotlib.pyplot as plt
 
-## How this pairs with CNI
+labels = main["label"].tolist()
+panels = [("Low-access tracts", la), ("Low-income, low-access tracts", lila)]
+
+
+def ladder_chart(mode):
+    ink = "#343a40" if mode == "light" else "#e3e6ea"
+    muted = "#5f6670" if mode == "light" else "#aab1ba"
+    bar = "#2a78d6" if mode == "light" else "#3987e5"
+
+    fig, axes = plt.subplots(1, 2, figsize=(9, 3.6), sharey=True,
+                             layout="constrained")
+    fig.patch.set_alpha(0)
+    for ax, (title, values) in zip(axes, panels):
+        y = range(len(values))
+        ax.barh(y, values.to_numpy(), color=bar, height=0.62)
+        for yi, val in zip(y, values.to_numpy()):
+            ax.text(val + values.max() * 0.02, yi, f"{val:,}", va="center",
+                    color=ink, fontsize=10)
+        ax.set_title(title, loc="left", color=ink, fontsize=11.5)
+        ax.set_xlim(0, values.max() * 1.18)
+        ax.set_facecolor("none")
+        ax.tick_params(colors=muted, length=0)
+        ax.set_xticks([])
+        for side in ("top", "right", "bottom", "left"):
+            ax.spines[side].set_visible(False)
+    axes[0].set_yticks(range(len(labels)), labels, color=ink, fontsize=10)
+    axes[0].invert_yaxis()  # shared y: inverting once flips both panels
+    plt.show()
+
+
+ladder_chart("light")
+ladder_chart("dark")
+```
+
+::: {.callout-note collapse="true"}
+## Does the threshold change the story?
+
+<!-- TODO: one sentence. The ordering of steps holds at every threshold; the
+half-mile urban threshold flags more tracts under every definition. -->
+
+```{python}
+#| label: tbl-thresholds
+#| tbl-cap: "Low-access tracts by definition and distance threshold"
+#| echo: false
+#| output: asis
+names = {"1And10": "1 mi urban / 10 mi rural", "halfAnd10": "½ mi / 10 mi",
+         "1And20": "1 mi / 20 mi"}
+wide = (summary.assign(threshold=summary["variant"].map(names))
+        .pivot(index="label", columns="threshold", values="tracts_low_access")
+        .reindex(main["label"])[list(names.values())])
+cols = list(names.values())
+print("| Definition | " + " | ".join(cols) + " |")
+print("|---|" + "---:|" * len(cols))
+for label, r in wide.iterrows():
+    print(f"| {label} | " + " | ".join(f"{int(x):,}" for x in r) + " |")
+```
+:::
+
+## How many people does the definition move?
+
+<!-- TODO takeaway: one or two plain sentences. Counting every SNAP retailer
+instead of only large grocery stores moves `r py$moved_people` Pennsylvanians from
+"more than the threshold from a store" to "within it" (`r py$moved_share` of
+those who were beyond it). `r py$la_pop_drop` people live in tracts that lose
+low-access status, and `r py$lila_pop_drop` in low-income tracts that lose
+food-desert status. Remind the reader which of the two numbers each one is. -->
+
+```{python}
+#| label: tbl-impact
+#| tbl-cap: "Pennsylvania under each definition (straight-line distance; 1 mile urban, 10 miles rural)"
+#| echo: false
+#| output: asis
+rows = [("People beyond the threshold", "pop_beyond_threshold"),
+        ("People in low-access tracts", "pop_in_low_access_tracts"),
+        ("People in low-income, low-access tracts", "pop_in_lila_tracts"),
+        ("Low-access tracts", "tracts_low_access"),
+        ("Low-income, low-access tracts", "tracts_lila")]
+print("| | Large grocery retailers only | Every SNAP retailer | Difference |")
+print("|---|---:|---:|---:|")
+for label, col in rows:
+    a, b = main.loc[1, col], main.loc[5, col]
+    print(f"| {label} | {a:,} | {b:,} | −{a - b:,} |")
+```
+
+### Which stores put them within reach?
+
+<!-- TODO takeaway. For the `r py$moved_people` people who move, this is the kind
+of store that is now their nearest. Convenience stores are the nearest new store
+for `r py$near_conv` (`r py$near_conv_share`); dollar stores for `r py$near_dollar`.
+This complements the ladder: the ladder credits dollar stores with the biggest
+drop in tracts because they're added first, but for most people the store that
+closes the gap is a convenience store. -->
+
+```{python}
+#| label: nearest-chart
+#| fig-cap: "People beyond the threshold with large grocery retailers only but within it with every SNAP retailer, by the type of store now nearest to them"
+#| fig-alt: "Horizontal bar chart. Convenience stores are the nearest new store for about 1.08 million people, dollar stores for about 262,000, chain pharmacies for about 117,000, and other and specialty stores for under 30,000 each."
+#| renderings: [light, dark]
+near_plot = near.sort_values("people")
+
+
+def nearest_chart(mode):
+    ink = "#343a40" if mode == "light" else "#e3e6ea"
+    bar = "#2a78d6" if mode == "light" else "#3987e5"
+    fig, ax = plt.subplots(figsize=(8, 2.8), layout="constrained")
+    fig.patch.set_alpha(0)
+    ax.set_facecolor("none")
+    y = range(len(near_plot))
+    ax.barh(y, near_plot["people"], color=bar, height=0.62)
+    for yi, val in zip(y, near_plot["people"]):
+        ax.text(val + near_plot["people"].max() * 0.015, yi, f"{val:,}", va="center",
+                color=ink, fontsize=10)
+    ax.set_yticks(list(y), near_plot["label"], color=ink, fontsize=10)
+    ax.set_xlim(0, near_plot["people"].max() * 1.15)
+    ax.set_xticks([])
+    ax.tick_params(length=0)
+    for side in ("top", "right", "bottom", "left"):
+        ax.spines[side].set_visible(False)
+    plt.show()
+
+
+nearest_chart("light")
+nearest_chart("dark")
+```
+
+### Who lives in the tracts that lose their designation
+
+<!-- TODO takeaway: the tracts that drop out under the wider definition are home to
+`r py$lose_snap_hh` households receiving SNAP and `r py$lose_nov_hh` households
+without a vehicle in low-income tracts alone. These are tract totals (everyone in
+the tract), from USDA's SRAM tract characteristics. -->
+
+```{python}
+#| label: tbl-who
+#| tbl-cap: "Residents of tracts that are low access with large grocery retailers only but not with every SNAP retailer (tract totals)"
+#| echo: false
+#| output: asis
+cols = ["Residents", "Children (0-17)", "Seniors (65+)", "Households",
+        "Households receiving SNAP", "Households without a vehicle"]
+groups = ["Lose low-access status", "Lose low-income, low-access status"]
+print("| | " + " | ".join(groups) + " | Low-income tracts that lose status, share of PA |")
+print("|---|" + "---:|" * (len(groups) + 1))
+print("| Tracts | " + " | ".join(f"{who.loc[g, 'tracts']:,}" for g in groups)
+      + f" | {who.loc[groups[1], 'tracts'] / who.loc['Pennsylvania', 'tracts']:.1%} |")
+for c in cols:
+    vals = " | ".join(f"{who.loc[g, c]:,}" for g in groups)
+    print(f"| {c} | {vals} | {who.loc[groups[1], c] / who.loc['Pennsylvania', c]:.1%} |")
+```
+
+::: {.callout-note collapse="true"}
+## How sure are these counts?
+
+- **Against USDA.** With every SNAP retailer, this method counts within 2% of
+  USDA's own figure for people more than a mile from a store in urban tracts
+  (see "Does it reproduce USDA's numbers?").
+- **The block approximation.** Counting every ambiguous block as entirely inside
+  or entirely beyond the threshold puts people beyond it at `r py$pb1` with large
+  grocery retailers only and `r py$pb5` with every SNAP retailer. Even taking the
+  lowest figure for the first and the highest for the second, the wider definition
+  moves at least `r py$moved_min` people.
+- **Other thresholds.** The same comparison at each threshold:
+
+```{python}
+#| label: tbl-impact-thresholds
+#| tbl-cap: "People beyond the threshold, by threshold"
+#| echo: false
+#| output: asis
+names = {"1And10": "1 mi urban / 10 mi rural", "halfAnd10": "½ mi / 10 mi",
+         "1And20": "1 mi / 20 mi"}
+print("| Threshold | Large grocery retailers only | Every SNAP retailer | Difference |")
+print("|---|---:|---:|---:|")
+for v, label in names.items():
+    r = summary.loc[summary["variant"] == v].set_index("step")
+    a, b = r.loc[1, "pop_beyond_threshold"], r.loc[5, "pop_beyond_threshold"]
+    print(f"| {label} | {a:,} | {b:,} | −{a - b:,} |")
+```
+:::
+
+## Pick the stores that count
+
+<!-- TODO takeaway: which places drop out first. Readers can check and uncheck store
+types and see which tracts change. Suggest trying dollar stores alone, or
+everything except convenience stores. -->
+
+```{ojs}
+//| echo: false
+tracts = FileAttachment("data/tract_combos.csv").csv({typed: false})
+shapes = FileAttachment("data/pa_tracts.geojson").json()
+storeTypes = FileAttachment("data/store_types.csv").csv({typed: true})
+comboSummary = FileAttachment("data/combo_summary.csv").csv({typed: true})
+
+viewof picked = Inputs.checkbox(storeTypes, {
+  label: "Stores that count",
+  format: d => `${d.label} (${d.stores_pa.toLocaleString()} in PA)`,
+  value: storeTypes.filter(d => d.key === "supermarket" || d.key === "grocery")
+})
+
+viewof threshold = Inputs.radio(
+  new Map([["1 mile urban, 10 miles rural", "1And10"],
+           ["½ mile urban, 10 miles rural", "halfAnd10"],
+           ["1 mile urban, 20 miles rural", "1And20"]]),
+  {label: "Distance threshold", value: "1And10"})
+```
+
+```{ojs}
+//| echo: false
+// Bit c of each tract's hex string = low access under store-type combination c,
+// where bit g of c = store type g (see _analysis/01_store_types.py).
+combo = picked.reduce((c, d) => c | (1 << d.bit), 0)
+largeOnly = storeTypes.filter(d => d.key === "supermarket" || d.key === "grocery")
+                      .reduce((c, d) => c | (1 << d.bit), 0)
+allTypes = storeTypes.reduce((c, d) => c | (1 << d.bit), 0)
+isLA = (t, c) => (parseInt(t[`la_${threshold}`][c >> 2], 16) >> (c & 3)) & 1
+
+byTract = new Map(tracts.map(d => [d.tract_geoid, d]))
+statusOf = id => {
+  const t = byTract.get(id)
+  if (!t) return "Not low access"
+  if (isLA(t, combo)) return "Low access with these stores"
+  if (isLA(t, largeOnly)) return "Low access with large grocery retailers only"
+  return "Not low access"
+}
+
+tally = c => {
+  const la = tracts.filter(t => isLA(t, c))
+  return {n: la.length, lila: la.filter(t => t.low_income === "1").length,
+          pop: d3.sum(la, t => +t.pop2020)}
+}
+now = tally(combo)
+base = tally(largeOnly)
+beyond = c => comboSummary.find(d => d.variant === threshold && d.combo === c)?.pop_beyond ?? 0
+note = combo === largeOnly ? " This is FARA and LRAM's large-retailer definition."
+     : combo === allTypes ? " This is SRAM's definition: every SNAP retailer except farmers markets."
+     : ""
+
+md`${picked.length === 0
+  ? "**Pick at least one store type.**"
+  : `**${now.n.toLocaleString()} low-access tracts** (${now.lila.toLocaleString()} also low income), home to ${now.pop.toLocaleString()} people. **${beyond(combo).toLocaleString()} people** live beyond the threshold.<br>With large grocery retailers only: ${base.n.toLocaleString()} tracts (${base.lila.toLocaleString()} low income) and ${beyond(largeOnly).toLocaleString()} people beyond the threshold.${note}`}`
+```
+
+```{ojs}
+//| echo: false
+// Leaflet on OpenStreetMap tiles (no API key), greyed with CSS to match the page theme
+L = require("leaflet@1.9.4")
+leafletCss = html`<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css">
+<style>
+  .osm-tiles { filter: grayscale(1) brightness(1.04) contrast(0.85); }
+  body.quarto-dark .osm-tiles { filter: grayscale(1) invert(1) brightness(0.8) contrast(0.85); }
+</style>`
+
+palette = ({
+  "Low access with these stores": {fill: "#eb6834", opacity: 0.75},
+  "Low access with large grocery retailers only": {fill: "#6da7ec", opacity: 0.6},
+  "Not low access": {fill: "#000000", opacity: 0}
+})
+
+legend = html`<div style="display:flex; gap:1.25rem; flex-wrap:wrap; font-size:0.85rem; margin:0.25rem 0 0.5rem;">
+  ${Object.entries(palette).slice(0, 2).map(([label, s]) => html`<span style="display:inline-flex; align-items:center; gap:0.4rem;">
+    <span style="width:14px; height:14px; border-radius:3px; background:${s.fill}; opacity:${s.opacity + 0.2};"></span>${label}</span>`)}
+</div>`
+
+mapEl = {
+  leafletCss;
+  const el = html`<div style="height:560px; border-radius:6px;"></div>`
+  // Resolves with the tract layer once Leaflet has built it, so the restyle
+  // cell below waits for it instead of running too early on first load.
+  let ready
+  el._layer = new Promise(resolve => { ready = resolve })
+  yield el
+
+  const map = L.map(el, {preferCanvas: true, scrollWheelZoom: false, zoomSnap: 0.25})
+  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    maxZoom: 19, className: "osm-tiles"
+  }).addTo(map)
+
+  const layer = L.geoJSON(shapes, {style: {weight: 0.4, color: "#6c757d", opacity: 0.35,
+                                            fillOpacity: 0}}).addTo(map)
+  map.fitBounds(layer.getBounds())
+  ready(layer)
+  invalidation.then(() => map.remove())
+}
+```
+
+```{ojs}
+//| echo: false
+// Restyle and retitle the tracts whenever the store types or threshold change
+restyle = {
+  const layer = await mapEl._layer
+  layer.eachLayer(l => {
+    const id = l.feature.properties.tract_geoid
+    const status = statusOf(id)
+    const s = palette[status]
+    l.setStyle({fillColor: s.fill, fillOpacity: s.opacity})
+    const t = byTract.get(id) ?? {}
+    l.unbindTooltip().bindTooltip(
+      `<strong>${t.county ?? ""}, tract ${id.slice(5)}</strong><br>` +
+      `Population: ${(+t.pop2020 || 0).toLocaleString()}<br>${status}`,
+      {sticky: true})
+  })
+}
+```
+
+## Does it reproduce USDA's numbers?
+
+<!-- TODO takeaway, one sentence: with the same stores as USDA's SRAM, the measure
+matches USDA's published flags and counts closely, so differences across the
+ladder come from the definition, not the method.
+
+Why compare with SRAM and not the original FARA (now LRAM): LRAM still uses a
+2019 store list and 2010 tract boundaries, so a gap against it would mix the
+definition with old data. SRAM is USDA's current product, uses the same store
+universe as step 5, and publishes both its flags and the number of people
+beyond each distance for every tract. -->
+
+**Tract designations.** With every SNAP retailer counted, this method and USDA
+agree on `r py$agree_la` of Pennsylvania tracts' low-access status (Cohen's kappa
+`r py$kappa_la`; LILA kappa `r py$kappa_lila`).
+
+```{python}
+#| label: tbl-validation
+#| tbl-cap: "Agreement with USDA's published SRAM flags, Pennsylvania tracts (all SNAP retailers)"
+#| echo: false
+#| output: asis
+names = {"1And10": "1 mi / 10 mi", "halfAnd10": "½ mi / 10 mi", "1And20": "1 mi / 20 mi"}
+t = flags_v.query("step == 5").copy()
+print("| Threshold | Measure | Tracts flagged (this method) | Tracts flagged (USDA) | Agreement | Kappa |")
+print("|---|---|---:|---:|---:|---:|")
+for _, r in t.iterrows():
+    print(f"| {names[r.variant]} | {r.measure} | {r.ours_flagged:,} | {r.reference_flagged:,} "
+          f"| {r.agreement:.1%} | {r.kappa:.2f} |")
+```
+
+**People beyond the threshold.** USDA also publishes, for every tract, how many
+people live beyond each distance. In urban tracts this method counts
+`r py$pop1_ours` people more than a mile from a SNAP retailer; USDA counts
+`r py$pop1_sram` (`r py$pop1_ratio`). Tract by tract, the shares correlate at
+`r py$r1`, and `r py$within5_1` of urban tracts are within 5 percentage points of
+USDA's figure.
+
+```{python}
+#| label: validation-chart
+#| fig-cap: "Share of each urban tract's residents more than 1 mile from a SNAP retailer: this method vs. USDA"
+#| fig-alt: "Scatter plot of 2,494 urban Pennsylvania tracts. Points cluster tightly along the diagonal line where this method's share equals USDA's published share."
+#| renderings: [light, dark]
+urban_v = tract_v.loc[tract_v["urban"] == 1].dropna(subset=["ours_share_1", "sram_share_1"])
+
+
+def validation_chart(mode):
+    ink = "#343a40" if mode == "light" else "#e3e6ea"
+    muted = "#5f6670" if mode == "light" else "#aab1ba"
+    dot = "#2a78d6" if mode == "light" else "#3987e5"
+    fig, ax = plt.subplots(figsize=(5.5, 5), layout="constrained")
+    fig.patch.set_alpha(0)
+    ax.set_facecolor("none")
+    ax.plot([0, 1], [0, 1], color=muted, linewidth=1, linestyle="--")
+    ax.scatter(urban_v["sram_share_1"], urban_v["ours_share_1"], s=8,
+               alpha=0.35 if mode == "light" else 0.55, color=dot, linewidths=0)
+    ax.set_xlim(0, 1); ax.set_ylim(0, 1)
+    ax.set_xlabel("USDA SRAM", color=muted)
+    ax.set_ylabel("This method", color=muted)
+    for axis in (ax.xaxis, ax.yaxis):
+        axis.set_major_formatter(plt.FuncFormatter(lambda x, _: f"{x:.0%}"))
+    ax.tick_params(colors=muted, length=0)
+    for side in ("top", "right"):
+        ax.spines[side].set_visible(False)
+    for side in ("bottom", "left"):
+        ax.spines[side].set_color(muted)
+    plt.show()
+
+
+validation_chart("light")
+validation_chart("dark")
+```
+
+<!-- TODO: one sentence on rural tracts. With every SNAP retailer counted, almost
+no one in Pennsylvania is 10 miles from a store (`r py$pop10_ours` people here vs.
+`r py$pop10_sram` in USDA's figures), so rural tracts can't test the method much. -->
+
+::: {.callout-note collapse="true"}
+## How much does the block approximation matter?
+
+Everyone in a block gets the distance from the block's internal point. That's
+exact for small city blocks and rough for large rural ones. To bound it, a block
+counts as *ambiguous* when the threshold falls within its effective radius (the
+radius of a circle with the block's land area), so part of it could sit on
+either side.
+
+`r py$amb1` of Pennsylvanians live in ambiguous blocks under the large-grocery
+definition (`r py$amb5` with every SNAP retailer). Counting every ambiguous block
+as entirely inside, then entirely beyond, the threshold puts low-access tracts at
+`r py$b1` under the large-grocery definition and `r py$b5` with every SNAP
+retailer. These are worst cases, since a real block is rarely all on one
+side. Even at the extremes the ranges don't overlap, so the gap between the two
+definitions is larger than anything the approximation could produce.
+
+<!-- TODO (optional): the close match with USDA's SRAM above suggests the
+approximation isn't biased in practice; USDA's own method approximates too. -->
+:::
+
+## How this pairs with the Community Need Index
+
+<!-- TODO: the CNI's food access component gives 0/2/4 points from these flags.
+Which definition it uses changes which tracts score as highest need. Link to the
+CNI page once it exists. -->
+
+## What this can and can't say
+
+<!-- TODO:
+- It measures distance only: not price, quality, hours, or whether a dollar store
+  sells fresh food. That's the substantive question behind "which stores count."
+- Straight-line distance, not driving distance; no vehicle access yet.
+- Block internal points: everyone in a block is assigned the same distance.
+- Dollar stores and pharmacies are identified by store name, a pattern match
+  spot-checked but not authoritative. -->
+
+## Methods and code
+
+::: {.callout-note collapse="true"}
+## Data, definitions, and validation
+
+<!-- TODO: short list.
+- Population: 2020 census blocks (TIGER/Line 2025), 336,985 PA blocks, each at its
+  internal point.
+- Retailers: USDA SNAP Retailer Locator, August 2026, searched nationally so border
+  blocks can find stores in neighboring states.
+- Low access: FARA's rule (at least 500 people or a third of the tract beyond the
+  threshold), with USDA's own urban and low-income tract flags from SRAM.
+- Validation: see "Does it reproduce USDA's numbers?" above. -->
+
+The distance pipeline is [OS-FARA](TODO-link), an open-source replication of
+USDA's Food Access Research Atlas. The ladder and map data are built by
+[`projects/food-store-definitions/_analysis`](https://github.com/sean-hudson-data/sean-hudson-data.github.io/tree/main/projects/food-store-definitions/_analysis).
+
+```{python}
+#| label: combo-code
+#| eval: false
+#| code-fold: false
+# One nearest-store search per store type (D: blocks x types, in metres).
+# The nearest store in any combination of types is the closest of its types,
+# so 7 searches cover all 127 combinations.
+def combo_distance(c):
+    cols = [g for g in range(len(TYPES)) if c >> g & 1]
+    return D[:, cols].min(axis=1)
+```
+:::

@@ -1,0 +1,8 @@
+bit,key,label,stores_pa,stores_us
+0,supermarket,Supermarkets and super stores,1594,40170
+1,grocery,Grocery stores,1270,21850
+2,dollar,Dollar stores,1675,37340
+3,pharmacy,Chain pharmacies,485,14687
+4,convenience,Convenience stores,4039,111494
+5,specialty,Specialty stores,257,5508
+6,other,Other SNAP retailers,170,14365

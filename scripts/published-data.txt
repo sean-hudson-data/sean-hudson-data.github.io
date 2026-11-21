@@ -16,6 +16,12 @@ projects/futurama/data/parse_report.csv
 projects/futurama/data/sensitivity_fillers.csv
 projects/futurama/data/speaker_aliases.csv
 
+# Food store definitions (built by projects/food-store-definitions/_analysis/01-02)
+projects/food-store-definitions/data/ladder_summary.csv
+projects/food-store-definitions/data/store_types.csv
+projects/food-store-definitions/data/combo_summary.csv
+projects/food-store-definitions/data/tract_combos.csv
+projects/food-store-definitions/data/pa_tracts.geojson
+
 # Examples for later projects:
-# projects/food-store-definitions/data/tract_flags.csv
 # projects/cni-sample/data/allegheny.pmtiles
