@@ -1,13 +1,15 @@
 [
   {
-    "listing": "/index.html",
+    "listing": "/projects.html",
     "items": [
+      "/projects/mco-medicaid/index.html",
       "/projects/futurama/index.html"
     ]
   },
   {
-    "listing": "/projects.html",
+    "listing": "/index.html",
     "items": [
+      "/projects/mco-medicaid/index.html",
       "/projects/futurama/index.html"
     ]
   }

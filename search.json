@@ -1,19 +1,5 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Sean Hudson",
-    "section": "",
-    "text": "I build data systems and analyses for food rescue: measuring community need, mapping food access, and helping a national network of partners understand their impact. I work mostly in R, increasingly in Python, and like analyses that end in a decision someone can act on."
-  },
-  {
-    "objectID": "index.html#featured-work",
-    "href": "index.html#featured-work",
-    "title": "Sean Hudson",
-    "section": "Featured work",
-    "text": "Featured work\n\n\n\n\n\n\n\n\n\n\nWhat Is Bender’s Most-Used Word?\n\n\n\nR\n\nText analysis\n\nJust for fun\n\n\n\nTesting a Futurama plot point against 140 episodes of transcripts: Bender’s top word is his own name, but nobody says ‘ass’ more.\n\n\n\n\n\nNo matching items\n\nAll projects →"
-  },
-  {
     "objectID": "projects/futurama/index.html",
     "href": "projects/futurama/index.html",
     "title": "What Is Bender’s Most-Used Word?",
@@ -67,7 +53,7 @@
     "href": "projects.html",
     "title": "Projects",
     "section": "",
-    "text": "What Is Bender’s Most-Used Word?\n\n\n\nR\n\nText analysis\n\nJust for fun\n\n\n\nTesting a Futurama plot point against 140 episodes of transcripts: Bender’s top word is his own name, but nobody says ‘ass’ more.\n\n\n\n\n\nNo matching items"
+    "text": "What Happened to I/DD Spending When States Moved to Managed Care?\n\n\n\nR\n\nCausal inference\n\nHealth policy\n\n\n\nTODO: one sentence for the listing card, stating the finding, not the method.\n\n\n\n\n\n\n\n\n\n\n\n\nWhat Is Bender’s Most-Used Word?\n\n\n\nR\n\nText analysis\n\nJust for fun\n\n\n\nTesting a Futurama plot point against 140 episodes of transcripts: Bender’s top word is his own name, but nobody says ‘ass’ more.\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -75,5 +61,75 @@
     "title": "About",
     "section": "",
     "text": "Now. Director of Data & Analytics at 412 Food Rescue, which runs the Food Rescue Hero platform used by food rescue organizations across North America. As the organization’s dedicated data lead, I cover BI, data engineering, geospatial analysis, statistical modeling, and ML.\nBefore. \nEducation. University of Pittsburgh, School of Public and International Affairs. \nTools. R (tidyverse, fixest, sf), Python (pandas, geopandas, pyfixest), SQL/Postgres, Observable JS, MapLibre.\nElsewhere. Treasurer, National Food Recovery Association executive board."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Sean Hudson",
+    "section": "",
+    "text": "I build data systems and analyses for food rescue: measuring community need, mapping food access, and helping a national network of partners understand their impact. I work mostly in R, increasingly in Python, and like analyses that end in a decision someone can act on."
+  },
+  {
+    "objectID": "index.html#featured-work",
+    "href": "index.html#featured-work",
+    "title": "Sean Hudson",
+    "section": "Featured work",
+    "text": "Featured work\n\n\n\n\n\n\n\n\nWhat Happened to I/DD Spending When States Moved to Managed Care?\n\n\n\nR\n\nCausal inference\n\nHealth policy\n\n\n\nTODO: one sentence for the listing card, stating the finding, not the method.\n\n\n\n\n\n\n\n\n\n\n\n\nWhat Is Bender’s Most-Used Word?\n\n\n\nR\n\nText analysis\n\nJust for fun\n\n\n\nTesting a Futurama plot point against 140 episodes of transcripts: Bender’s top word is his own name, but nobody says ‘ass’ more.\n\n\n\n\n\nNo matching items\n\nAll projects →"
+  },
+  {
+    "objectID": "projects/mco-medicaid/index.html",
+    "href": "projects/mco-medicaid/index.html",
+    "title": "What Happened to I/DD Spending When States Moved to Managed Care?",
+    "section": "",
+    "text": "Bottom line. Adopting an MCO model does appear to reduce annual per-enrollee expenditures to IDD waiver services."
+  },
+  {
+    "objectID": "projects/mco-medicaid/index.html#why-states-moved-idd-services-into-managed-care",
+    "href": "projects/mco-medicaid/index.html#why-states-moved-idd-services-into-managed-care",
+    "title": "What Happened to I/DD Spending When States Moved to Managed Care?",
+    "section": "Why states moved I/DD services into managed care",
+    "text": "Why states moved I/DD services into managed care\n\nStates moved I/DD services from fee-for-service into managed care for largely the same reasons they’ve moved other Medicaid programs: more predictable budgets and slower cost growth. Under fee-for-service, the state pays providers for each service delivered, so spending rises with use. Most managed care arrangements instead pay a plan a fixed monthly amount per enrollee, called a capitation rate, and the plan takes on the financial risk of covering everyone’s services within it. That should give the state a predictable cost per person and gives the plan a reason to manage care efficiently, through care coordination, shifting services from institutions to community settings, negotiating provider rates. Critics worry the savings can also come from people getting less: plans may approve fewer services, pay less for what they approve, or leave providers with rates so low they deliver fewer hours than authorized.\n\n\nShow code\nadopt |&gt;\n  transmute(State = state, Program = program, `Year adopted` = adoption_year) |&gt;\n  knitr::kable()\n\n\n\n\nTable 1: States that moved I/DD waiver services into managed care\n\n\n\n\n\n\n\n\n\n\n\nState\nProgram\nYear adopted\n\n\n\n\nArizona\nALTCS (Division of Developmental Disabilities)\n1988\n\n\nMichigan\nManaged Specialty Services and Supports (PIHPs)\n1998\n\n\nWisconsin\nFamily Care\n2000\n\n\nNorth Carolina\nLME/MCOs (later Tailored Plans)\n2013\n\n\nKansas\nKanCare\n2014\n\n\nIowa\nIA Health Link\n2016\n\n\nArkansas\nPASSE\n2019\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 1: States coded as adopters, by period of adoption"
+  },
+  {
+    "objectID": "projects/mco-medicaid/index.html#what-the-spending-data-shows-before-any-model",
+    "href": "projects/mco-medicaid/index.html#what-the-spending-data-shows-before-any-model",
+    "title": "What Happened to I/DD Spending When States Moved to Managed Care?",
+    "section": "What the spending data shows before any model",
+    "text": "What the spending data shows before any model\n\nAdopting states started all over the map, but most ended up spending less per enrollee than they had before, even as typical states kept spending more.\nBefore adoption, these seven states don’t look alike. Arizona and Michigan spent well below the typical range, North Carolina tracked the median, and Kansas and Iowa spent far above it. What they share is what happens next. In Michigan, Wisconsin, North Carolina and Iowa, spending per enrollee in the I/DD category drops around the adoption year and stays down while the grey band keeps climbing, so the gap widens over time. Michigan falls by roughly half right after 1998 and stays flat for two decades.\nThe timing presents some challenges. In North Carolina, Kansas and Iowa, spending starts falling several years before the adoption year marked here. That could be states preparing for the switch, for example by restructuring waivers or tightening rates ahead of it, or it could mean the coded year is late. It also matters that Kansas, Iowa and North Carolina were spending well above typical states at their peaks, and unusually high spending tends to drift back toward the middle on its own. Those early declines are why the event study below checks for pre-existing trends.\n\nAll adoptersExplore a state\n\n\n\n\n\n\n\n\nFigure 2: Medicaid spending per enrollee in the I/DD category. Grey band: middle half of states that never adopted. Dashed line: adoption year.\n\n\n\n\n\n\n\nShow code\nrows = transpose(paths)\nbandRows = transpose(band)\nadopterNames = [...new Set(rows.filter(d =&gt; d.adoption_year !== null).map(d =&gt; d.State))].sort()\notherNames = [...new Set(rows.filter(d =&gt; d.adoption_year === null).map(d =&gt; d.State))].sort()\n\nviewof pick = Inputs.select([...adopterNames, ...otherNames], {label: \"State\", value: \"Michigan\"})\n\nselected = rows.filter(d =&gt; d.State === pick)\nadoptYear = selected[0].adoption_year\n\nPlot.plot({\n  height: 380,\n  marginLeft: 60,\n  x: {label: null, tickFormat: \"d\"},\n  y: {label: \"I/DD-category spending per enrollee\", grid: true, tickFormat: \"$,.0f\"},\n  marks: [\n    Plot.areaY(bandRows, {x: \"year\", y1: \"p25\", y2: \"p75\", fill: \"currentColor\", fillOpacity: 0.12}),\n    Plot.lineY(bandRows, {x: \"year\", y: \"p50\", stroke: \"currentColor\", strokeOpacity: 0.4, strokeDasharray: \"4,3\"}),\n    adoptYear !== null && adoptYear &gt;= 1991\n      ? Plot.ruleX([adoptYear], {stroke: \"#eb6834\", strokeDasharray: \"4,3\"}) : null,\n    Plot.lineY(selected, {x: \"year\", y: \"mcd_pe_idd\", stroke: \"#eb6834\", strokeWidth: 2.5}),\n    Plot.tip(selected, Plot.pointerX({x: \"year\", y: \"mcd_pe_idd\",\n      title: d =&gt; `${d.State}, ${d.year}: $${Math.round(d.mcd_pe_idd).toLocaleString()}`}))\n  ]\n})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nShow code\nmd`${adoptYear === null\n  ? `${pick} never adopted managed care for I/DD services.`\n  : adoptYear &lt; 1991\n    ? `${pick} adopted in ${adoptYear}, before the data start.`\n    : `${pick} adopted in ${adoptYear} (dashed line).`} Grey band: middle half of states that never adopted; dotted line: their median.`"
+  },
+  {
+    "objectID": "projects/mco-medicaid/index.html#spending-fell-after-adoption-and-kept-falling",
+    "href": "projects/mco-medicaid/index.html#spending-fell-after-adoption-and-kept-falling",
+    "title": "What Happened to I/DD Spending When States Moved to Managed Care?",
+    "section": "Spending fell after adoption, and kept falling",
+    "text": "Spending fell after adoption, and kept falling\n\nSpending per enrollee in the I/DD category fell as soon as states adopted managed care, kept falling for about a decade, and never recovered.\nCompared with states that never adopted, adopters’ spending dropped by about $324 in the adoption year and kept falling, to about $1,033 below never-adopters ten or more years later. Averaged over all post-adoption years, the drop is $728 per enrollee. Two cautions: past about seven years, the estimates rest on Michigan and Wisconsin alone, and adopters’ spending was already drifting down relative to other states in the years before adoption. “How much should you trust this?” tests whether that earlier drift could explain the drop.\n\n\n\n\n\n\nFigure 3: Change in I/DD-category spending per enrollee relative to the year before adoption, with 95% confidence intervals\n\n\n\n\n\n\n\n\n\nNoteWhy not a simple before-and-after comparison?"
+  },
+  {
+    "objectID": "projects/mco-medicaid/index.html#the-drop-is-spending-not-more-enrollees",
+    "href": "projects/mco-medicaid/index.html#the-drop-is-spending-not-more-enrollees",
+    "title": "What Happened to I/DD Spending When States Moved to Managed Care?",
+    "section": "The drop is spending, not more enrollees",
+    "text": "The drop is spending, not more enrollees\n\nThe per-enrollee expenditures are not better explained by changes in enrollment which remained fairly steady in adopting states.\n\n\n\n\n\n\nFigure 4: Log I/DD-category spending and log Medicaid enrollment around adoption"
+  },
+  {
+    "objectID": "projects/mco-medicaid/index.html#the-money-didnt-move-to-other-medicaid-services",
+    "href": "projects/mco-medicaid/index.html#the-money-didnt-move-to-other-medicaid-services",
+    "title": "What Happened to I/DD Spending When States Moved to Managed Care?",
+    "section": "The money didn’t move to other Medicaid services",
+    "text": "The money didn’t move to other Medicaid services\n\nCutting spending in one part of Medicaid can push costs somewhere else, either because services get recorded under a different category or because cuts in one service raise demand for others, such as fewer home supports leading to more hospital or nursing home care. If that were happening, other categories would rise to offset the I/DD drop. They don’t. The categories that rose add up to about $192, none of them by a clearly measurable amount, and prescription drugs actually fell slightly. Total spending per enrollee on personal health care fell by $632, about 87% of the $724 drop in the I/DD category. Nearly all of the change comes from that category.\nOne shift this can’t rule out: these categories cover spending on services only. Any part of a capitated payment that a plan keeps for administration or margin falls outside them entirely.\n\n\n\n\n\n\nFigure 5: Effect of adoption on Medicaid spending per enrollee, by service category"
+  },
+  {
+    "objectID": "projects/mco-medicaid/index.html#how-much-should-you-trust-this",
+    "href": "projects/mco-medicaid/index.html#how-much-should-you-trust-this",
+    "title": "What Happened to I/DD Spending When States Moved to Managed Care?",
+    "section": "How much should you trust this?",
+    "text": "How much should you trust this?\n\nAdopters’ spending was already drifting down before adoption: in this window it falls from about $197 above its pre-adoption level seven years out to zero, roughly $33 a year. That could reflect states preparing for the switch, such as restructuring waivers or holding down rates beforehand, or high spenders drifting back toward the middle. But the drift can’t account for what happens at adoption. Holding the comparison to the same five states throughout (Iowa, Kansas, Michigan, North Carolina and Wisconsin), spending drops $312 in the first year alone, about ten times the yearly drift. By year three it is $549 below its pre-adoption level, where the earlier drift alone would have predicted about $131. Averaged over the four post-adoption years, the drop is $443.\n\nSame states, same window\n\n\n\n\n\n\n\nFigure 6: Event study restricted to a balanced window\n\n\n\n\n\nCould this happen by chance?\n\nWith only six adopting states, the usual standard errors aren’t reliable, so I checked the result another way: assign the same adoption years to randomly chosen states and see how big an “effect” shows up by chance. I did this 1000 times. None of the random assignments produced a drop as large as the real one (p &lt; 0.001). That makes chance an unlikely explanation, though on its own it can’t rule out adopters differing from other states in some other way.\n\n\n\n\n\n\nFigure 7: The actual estimate against 1,000 placebo adoption assignments\n\n\n\n\n\n\n\n\n\nNoteWhy randomization inference?\n\n\n\n\n\n\nStandard errors clustered by state assume there are many independent groups to learn from. Here only six states ever change treatment status, so clustered standard errors tend to be too small and confidence intervals too narrow. Randomization inference sidesteps that problem.\nThe procedure: take the six real adoption years, shuffle them, and assign them to six states drawn at random from the 50 states and DC (Arizona excluded, since it adopted before the data begin). Re-estimate the two-way fixed effects model on this fake assignment and record the estimate. Repeating this 1000 times builds the distribution of estimates you’d see if adoption had no effect anywhere. The p-value is the share of placebo estimates at least as large in absolute value as the real one.\nTwo limits. First, it assumes any state could plausibly have been an adopter; if adopters were systematically different, the comparison is less clean. Second, it tests the simpler two-way fixed effects estimate rather than the Sun–Abraham event study, and it doesn’t address the pre-adoption drift. That’s what the balanced-window check is for."
+  },
+  {
+    "objectID": "projects/mco-medicaid/index.html#what-this-cant-tell-us",
+    "href": "projects/mco-medicaid/index.html#what-this-cant-tell-us",
+    "title": "What Happened to I/DD Spending When States Moved to Managed Care?",
+    "section": "What this can’t tell us",
+    "text": "What this can’t tell us\n\nThis analysis shows that spending fell. It can’t show whether quality of care changed with it. The limited evidence on experience is mixed: people with I/DD in Illinois managed care described problems with access and navigating the system (Gibbons, Owen, & Heller, 2016), and some family caregivers in four managed-care states reported less flexibility and harder access to services (Williamson et al., 2016). Nor can this data separate lower prices from fewer services: spending can fall because care costs less or because less of it is delivered.\nThe data also misses money that never reaches services. CMS’s personal health care figures exclude administrative costs, including what managed care plans keep for administration and margin. Before drawing policy conclusions, a state would want to confirm that those costs are small enough not to cancel out the savings in service spending."
   }
 ]
