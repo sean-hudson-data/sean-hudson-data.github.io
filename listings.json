@@ -3,14 +3,16 @@
     "listing": "/projects.html",
     "items": [
       "/projects/mco-medicaid/index.html",
-      "/projects/futurama/index.html"
+      "/projects/futurama/index.html",
+      "/projects/food-store-definitions/index.html"
     ]
   },
   {
     "listing": "/index.html",
     "items": [
       "/projects/mco-medicaid/index.html",
-      "/projects/futurama/index.html"
+      "/projects/futurama/index.html",
+      "/projects/food-store-definitions/index.html"
     ]
   }
 ]
